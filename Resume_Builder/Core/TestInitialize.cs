@@ -18,7 +18,6 @@ namespace ScientificCalculator.Core
         //    this.driver = driver;
         //}
 
-        [TestInitialize]
         //public void Setup()
         //{
         //    AppiumOptions Cap = new AppiumOptions();
@@ -38,6 +37,8 @@ namespace ScientificCalculator.Core
         //  //  driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
         //}
         //s8
+
+        [TestInitialize]
         public void Setup()
         {
             AppiumOptions Cap = new AppiumOptions();
@@ -46,8 +47,8 @@ namespace ScientificCalculator.Core
             Cap.AddAdditionalCapability(MobileCapabilityType.Udid, "ce11171b9bd3d81105");
             Cap.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "9");
             Cap.AddAdditionalCapability("appium:automationName", AutomationName.AndroidUIAutomator2);
-            Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader");
-            Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppActivity, "com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader.ScientificCal");
+            Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader");
+            Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppActivity, "com.resumemakerapp.cvmaker.Copper.CropImageActivity - CV Maker");
             // Use MobileCapabilityType.App for specifying the app path directly
             Cap.AddAdditionalCapability(MobileCapabilityType.App, "/data/app/com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader--MO3PCVgfH7n4Uv5R86seQ==/base.apk");
 

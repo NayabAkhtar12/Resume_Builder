@@ -9,32 +9,25 @@ namespace ScientificCalculator.Test_Class
      public class TestClass_SC : TestInitialize
     {
         Addition Add;
-        EMI e;
-
-        [TestMethod, Priority(1)]
-        public void test()
-        {
-            e.EMIWithValidValues();
-        }
-        //Operations of Scientific Calculator
-        //Addition
-
-        [TestMethod, Priority(1)]
-            public void Addition()
+     
+       public void Create_Cv()
         {
             Add = new Addition(driver);
-            Add.ClearScreen();
-            Add.BasicAddition();
-            Add.DecimalAddition();
-            Add.DecimalIntegerAdd();
-            Add.PositiveNegativeAddition();
-            Add.NegativeIntegerAddition();
-            Add.ZeroAddition();
-            Add.AdditionOfNegativeDecimals();
-            Add.AdditionOfNegativePositiveDecimals();
-            Add.ErrorHandling();
-            Add.LargeNumbersAddition();
+            Add.PersonalInfo_ValidInfo();
         }
+        //EMI e;
+        [TestMethod]
+        public void Select_Date_Of_Birth()
+        {
+            // Initialize Appium driver and navigate to the desired screen
 
+            // Initialize DatePickerHelper with the Appium driver
+            Addition datePickerHelper = new Addition(driver);
+
+            // Select the date of birth (e.g., 15th February 1990)
+            datePickerHelper.SelectDateOfBirth(15, 2, 1990);
+
+            // Additional assertions or actions if needed
+        }
     }
 }
