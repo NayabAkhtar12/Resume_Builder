@@ -1,0 +1,27 @@
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Scientific Calculator.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Scientific Calculator.pdb
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Appium.Net.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Castle.Core.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Newtonsoft.Json.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\SeleniumExtras.PageObjects.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\System.Drawing.Common.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\WebDriver.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\WebDriver.Support.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Appium.Net.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Castle.Core.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\Newtonsoft.Json.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\WebDriver.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\bin\Debug\WebDriver.Support.xml
+D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.AssemblyReference.cache
+D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.CoreCompileInputs.cache
+D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.CopyComplete
+D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Scientific Calculator.dll
+D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Scientific Calculator.pdb
