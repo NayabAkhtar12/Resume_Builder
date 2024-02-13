@@ -74,7 +74,7 @@
   <ItemGroup>
     <Compile Include="Pages\Identifiers\EMI_Identifiers.cs" />
     <Compile Include="Pages\Identifiers\ResumeBuilderIds.cs" />
-    <Compile Include="Pages\Create CV\Addition.cs" />
+    <Compile Include="Pages\Create CV\PersonalInfo.cs" />
     <Compile Include="Test-Class\TestClass_SC.cs" />
     <Compile Include="Core\TestInitialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

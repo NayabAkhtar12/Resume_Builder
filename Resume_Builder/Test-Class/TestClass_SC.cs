@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Android;
 using ScientificCalculator.Core;
 using ScientificCalculator.Pages;
 
@@ -8,12 +10,13 @@ namespace ScientificCalculator.Test_Class
     [TestClass]
      public class TestClass_SC : TestInitialize
     {
-        Addition Add;
-     
+        PersonalInfo P;
+
+        [TestMethod]
        public void Create_Cv()
         {
-            Add = new Addition(driver);
-            Add.PersonalInfo_ValidInfo();
+            P = new PersonalInfo(driver);
+            P.PersonalInfo_ValidInfo();
         }
         //EMI e;
         [TestMethod]
@@ -22,12 +25,13 @@ namespace ScientificCalculator.Test_Class
             // Initialize Appium driver and navigate to the desired screen
 
             // Initialize DatePickerHelper with the Appium driver
-            Addition datePickerHelper = new Addition(driver);
+            PersonalInfo datePickerHelper = new PersonalInfo(driver);
 
             // Select the date of birth (e.g., 15th February 1990)
-            datePickerHelper.SelectDateOfBirth(15, 2, 1990);
+            datePickerHelper.SelectDateOfBirth("2", "Thu, March 1 2024");
 
             // Additional assertions or actions if needed
         }
+      
     }
 }

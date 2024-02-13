@@ -29,9 +29,16 @@ namespace ScientificCalculator.Pages
         public IWebElement ChooseImage => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
 
         public IWebElement FromGallery => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
-        public IWebElement Day => driver.FindElement(By.XPath("//android.view.View[@content-desc='01 February 2024']"));
+        public IWebElement Day => driver.FindElement(By.XPath("//android.view.View[@content-desc=\"13 February 2024\"]\r\n"));
         public IWebElement Month => driver.FindElement(By.XPath("//android.view.View[@resource-id=\"android:id/month_view\"]"));
         public IWebElement okButton => driver.FindElement(By.XPath("//android.widget.Button[@resource-id='android:id/button1']"));
+        public IWebElement NextMonth => driver.FindElement(By.Id("android:id/next"));
+        public IWebElement PrevMonth => driver.FindElement(By.Id("android:id/prev"));
 
+        public IWebElement DatePicker => driver.FindElement(By.XPath("//android.widget.DatePicker"));
+        public IWebElement HeaderDate => driver.FindElement(By.XPath("//android.widget.TextView[@resource-id=\"android:id/date_picker_header_date\"]"));
+        public IWebElement HeaderYear => driver.FindElement(By.Id("android:id/date_picker_header_year"));
+
+        public IWebElement Dayelement => driver.FindElementById("android:id/date_picker_header_date");
     }
 }
