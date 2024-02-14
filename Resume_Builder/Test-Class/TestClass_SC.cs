@@ -28,7 +28,7 @@ namespace ScientificCalculator.Test_Class
             PersonalInfo datePickerHelper = new PersonalInfo(driver);
 
             // Select the date of birth (e.g., 15th February 1990)
-            datePickerHelper.SelectDateOfBirth("2", "Thu, March 1 2024");
+            datePickerHelper.SelectDateOfBirth("2", "February 2024");
 
             // Additional assertions or actions if needed
         }

@@ -51,57 +51,88 @@ namespace ScientificCalculator.Pages
             string Headerdate = I.HeaderDate.Text;
             string HeaderYear = I.HeaderYear.Text;
             string currentMonthYear = $"{Headerdate} {HeaderYear}"; // Combine header date and year
+            string Monthview = I.Monthview.Text;
 
-            while (true)
-            if (currentMonthYear == expectedMonthYear)
-            {
-                I.Day.Click();
-                    break;
-            }
-            else
-            {
-                I.NextMonth.Click();
-                    // Update the current month and year for the next iteration
-                    Headerdate = I.HeaderDate.Text;
-                    HeaderYear = I.HeaderYear.Text;
-                    currentMonthYear = $"{Headerdate} {HeaderYear}";
+            while(!(Headerdate.Equals(expectedMonthYear)) && (HeaderYear.Equals(expectedDay)))
+                {
+
                 }
+
+
+            // Parse the expected month and year
+            string[] expectedMonthYearParts = expectedMonthYear.Split(' ');
+            int expectedMonth = DateTime.ParseExact(expectedMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
+            int expectedYear = int.Parse(expectedMonthYearParts[1]);
+
+            // Parse the current month and year
+            string[] currentMonthYearParts = currentMonthYear.Split(' ');
+            int currentMonth = DateTime.ParseExact(currentMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
+            int currentYear = int.Parse(currentMonthYearParts[1]);
+
+            // While loop to navigate to the desired month and year
+            while (true)
+            {
+                if (currentMonth == expectedMonth && currentYear == expectedYear)
+                {
+                    // If the current month and year match the expected, select the day and break the loop
+                    I.Day.Click();
+                    break;
+                }
+                else if (expectedYear > currentYear || (expectedYear == currentYear && expectedMonth > currentMonth))
+                {
+                    I.NextMonth.Click();
+                }
+                else if (expectedYear < currentYear || (expectedYear == currentYear && expectedMonth < currentMonth))
+                {
+                    I.PrevMonth.Click();
+                }
+
+                // Update the current month and year for the next iteration
+                Headerdate = I.HeaderDate.Text;
+                HeaderYear = I.HeaderYear.Text;
+                currentMonthYear = $"{Headerdate} {HeaderYear}";
+                currentMonthYearParts = currentMonthYear.Split(' ');
+                currentMonth = DateTime.ParseExact(currentMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
+                currentYear = int.Parse(currentMonthYearParts[1]);
+            }
+
             I.okButton.Click();
         }
-            //while (true)
-            //{
-            //    // Find the month and year header
-              
-            //    string calendarMonthYear = I.HeaderDate.Text;
 
-            //    if (calendarMonthYear.Equals(expectedMonthYear))
-            //    {
-            //        // Find and click on the expected day
-            //        try
-            //        {
-            //            driver.FindElementByXPath($"//android.view.View[@text='{expectedDay}']").Click();
-            //            break;
-            //        }
+        //while (true)
+        //{
+        //    // Find the month and year header
 
-            //        catch (NoSuchElementException)
-            //        {
-            //            // Handle the case when the expected day is not found
-            //            Console.WriteLine($"Day {expectedDay} not found for the selected month and year.");
-            //            break;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        // Navigate to the next month
-            //        I.NextMonth.Click();
-            //    }
-            //}
-        }
+        //    string calendarMonthYear = I.HeaderDate.Text;
 
+        //    if (calendarMonthYear.Equals(expectedMonthYear))
+        //    {
+        //        // Find and click on the expected day
+        //        try
+        //        {
+        //            driver.FindElementByXPath($"//android.view.View[@text='{expectedDay}']").Click();
+        //            break;
+        //        }
 
-
-
+        //        catch (NoSuchElementException)
+        //        {
+        //            // Handle the case when the expected day is not found
+        //            Console.WriteLine($"Day {expectedDay} not found for the selected month and year.");
+        //            break;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Navigate to the next month
+        //        I.NextMonth.Click();
+        //    }
+        //}
     }
+
+
+
+
+}
 
 
 

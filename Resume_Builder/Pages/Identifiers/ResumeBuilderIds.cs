@@ -30,7 +30,7 @@ namespace ScientificCalculator.Pages
 
         public IWebElement FromGallery => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
         public IWebElement Day => driver.FindElement(By.XPath("//android.view.View[@content-desc=\"13 February 2024\"]\r\n"));
-        public IWebElement Month => driver.FindElement(By.XPath("//android.view.View[@resource-id=\"android:id/month_view\"]"));
+        public IWebElement Monthview => driver.FindElement(By.XPath("//android.view.View[@resource-id=\"android:id/month_view\"]"));
         public IWebElement okButton => driver.FindElement(By.XPath("//android.widget.Button[@resource-id='android:id/button1']"));
         public IWebElement NextMonth => driver.FindElement(By.Id("android:id/next"));
         public IWebElement PrevMonth => driver.FindElement(By.Id("android:id/prev"));
