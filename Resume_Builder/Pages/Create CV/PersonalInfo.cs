@@ -25,25 +25,59 @@ namespace ScientificCalculator.Pages
             I = new ResumeBuilderIds(driver);
         }
 
-        //Methods for Identifiers like click
         public void PersonalInfo_ValidInfo()
         {
-
+            //Valid Personal Info
             // Assert.IsNotNull(I, "Identifiers instance is not initialized");
             I.Name.SendKeys("Nayab");
             I.Designation.SendKeys("SQA");
             //Date of Birth
             I.DOB.Click();
-            I.Day.Click();
+            I.Day.Click(); //13 feb
             I.okButton.Click();
-            I.PhoneNo.SendKeys("034999999999");
-            I.Nationality.SendKeys("Pakistan");
-            I.Email.SendKeys("nayab@gmail.com");
+            I.PhoneNo.SendKeys("03498854766");
+            I.Nationality.SendKeys("Pakistani");
+            I.Email.SendKeys("nayabf52@gmail.com");
             I.Address.SendKeys("Bahria Phase 8");
             I.Female.Click();
 
         }
 
+        public void PersonalInfo_InValidInfo()
+        {
+            //InValid Personal Info
+            // Assert.IsNotNull(I, "Identifiers instance is not initialized");
+            I.Name.SendKeys("%&*");
+            I.Designation.SendKeys("  12%^&*");
+            //Date of Birth
+            I.DOB.Click();
+            I.Day.Click(); //13 feb
+            I.okButton.Click();
+            I.PhoneNo.SendKeys("034988547664444444444444");
+            I.Nationality.SendKeys("%^&*");
+            I.Email.SendKeys("nayabf52er355");
+            I.Address.SendKeys("$%^&%G");
+            I.Male.Click();
+            I.Female.Click();
+        }
+
+        public void PersonalInfo_SpacesInfo()
+        {
+            //InValid Personal Info
+            // Assert.IsNotNull(I, "Identifiers instance is not initialized");
+            I.Name.SendKeys("   ");
+            I.Designation.SendKeys("     ");
+            //Date of Birth
+            I.DOB.Click();
+            I.Day.Click(); //13 feb
+            I.okButton.Click();
+            I.PhoneNo.SendKeys("    ");
+            I.Nationality.SendKeys("    ");
+            I.Email.SendKeys("   ");
+            I.Address.SendKeys("   ");
+            I.Male.Click();
+            I.Female.Click();
+        }
         public void SelectDateOfBirth(string expectedDay, string expectedMonthYear)
         {
             // Click on the Date of Birth field
@@ -53,10 +87,10 @@ namespace ScientificCalculator.Pages
             string currentMonthYear = $"{Headerdate} {HeaderYear}"; // Combine header date and year
             string Monthview = I.Monthview.Text;
 
-            while(!(Headerdate.Equals(expectedMonthYear)) && (HeaderYear.Equals(expectedDay)))
-                {
+            //while(!(Headerdate.Equals(expectedMonthYear)) && (HeaderYear.Equals(expectedDay)))
+            //    {
 
-                }
+            //    }
 
 
             // Parse the expected month and year

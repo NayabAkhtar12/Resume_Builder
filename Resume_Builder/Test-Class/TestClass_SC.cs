@@ -12,11 +12,14 @@ namespace ScientificCalculator.Test_Class
     {
         PersonalInfo P;
 
-        [TestMethod]
+      //  [TestMethod]
        public void Create_Cv()
         {
             P = new PersonalInfo(driver);
             P.PersonalInfo_ValidInfo();
+            P.PersonalInfo_InValidInfo();
+            P.PersonalInfo_SpacesInfo();
+
         }
         //EMI e;
         [TestMethod]
@@ -26,7 +29,6 @@ namespace ScientificCalculator.Test_Class
 
             // Initialize DatePickerHelper with the Appium driver
             PersonalInfo datePickerHelper = new PersonalInfo(driver);
-
             // Select the date of birth (e.g., 15th February 1990)
             datePickerHelper.SelectDateOfBirth("2", "February 2024");
 

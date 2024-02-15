@@ -17,6 +17,7 @@ namespace ScientificCalculator.Core
         //{
         //    this.driver = driver;
         //}
+        //[TestInitialize]
 
         //public void Setup()
         //{
@@ -26,19 +27,19 @@ namespace ScientificCalculator.Core
         //    Cap.AddAdditionalCapability(MobileCapabilityType.Udid, "ONOZSG4H8HSGW8HY");
         //    Cap.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "11");
         //    Cap.AddAdditionalCapability("appium:automationName", AutomationName.AndroidUIAutomator2);
-        //    Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader");
-        //    Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppActivity, "com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader.ScientificCal");
+        //    Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader");
+        //    Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppActivity, "com.resumemakerapp.cvmaker.Copper.CropImageActivity - CV Maker");
         //    // Use MobileCapabilityType.App for specifying the app path directly
-        //    Cap.AddAdditionalCapability(MobileCapabilityType.App, "/data/app/com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader--MO3PCVgfH7n4Uv5R86seQ==/base.apk");
+        //    Cap.AddAdditionalCapability(MobileCapabilityType.App, "/data/app/~~YTheRiuzbBCtVzExXoLCnA==/com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader-8ElXVAj5w6cs-EUxBOnyQQ==/base.apk");
 
         //    //Navigate to App
         //    driver = new AndroidDriver<IWebElement>(new Uri("http://192.168.100.5:4723/"), Cap, TimeSpan.FromSeconds(180));
 
-        //  //  driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+        //    //  driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
         //}
         //s8
-
         [TestInitialize]
+
         public void Setup()
         {
             AppiumOptions Cap = new AppiumOptions();
@@ -47,15 +48,16 @@ namespace ScientificCalculator.Core
             Cap.AddAdditionalCapability(MobileCapabilityType.Udid, "ce11171b9bd3d81105");
             Cap.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "9");
             Cap.AddAdditionalCapability("appium:automationName", AutomationName.AndroidUIAutomator2);
-            Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader");
-            Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppActivity, "com.resumemakerapp.cvmaker.Copper.CropImageActivity - CV Maker");
-            // Use MobileCapabilityType.App for specifying the app path directly
-            Cap.AddAdditionalCapability(MobileCapabilityType.App, "/data/app/com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader--MO3PCVgfH7n4Uv5R86seQ==/base.apk");
+      //    Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader");
+         //   Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppActivity, "com.resumemakerapp.cvmaker.Copper.CropImageActivity - CV Maker");
+           // Use MobileCapabilityType.App for specifying the app path directly
 
-            //Navigate to App
-            driver = new AndroidDriver<IWebElement>(new Uri("http://192.168.100.5:4723/"), Cap, TimeSpan.FromSeconds(180));
+        //   Cap.AddAdditionalCapability(MobileCapabilityType.App, "/data/app/com.voice.calculator.qr.scanner.scientificcalculator.qrcode.barcode.reader--MO3PCVgfH7n4Uv5R86seQ==/base.apk");
 
-            //  driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+           // Navigate to App
+            driver = new AndroidDriver<IWebElement>(new Uri("http://192.168.100.22:4723/"), Cap, TimeSpan.FromSeconds(180));
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
         }
 
         [TestCleanup]
