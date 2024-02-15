@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.Remoting.Messaging;
+using System.Text.RegularExpressions;
 
 
 namespace ScientificCalculator.Pages
@@ -24,6 +25,9 @@ namespace ScientificCalculator.Pages
             // Initialize I1 in the constructor
             I = new ResumeBuilderIds(driver);
         }
+        private TestInitialize T;
+
+     
 
         public void PersonalInfo_ValidInfo()
         {
@@ -33,7 +37,7 @@ namespace ScientificCalculator.Pages
             I.Designation.SendKeys("SQA");
             //Date of Birth
             I.DOB.Click();
-            I.Day.Click(); //13 feb
+            //I.Day.Click(); //13 feb
             I.okButton.Click();
             I.PhoneNo.SendKeys("03498854766");
             I.Nationality.SendKeys("Pakistani");
@@ -51,7 +55,7 @@ namespace ScientificCalculator.Pages
             I.Designation.SendKeys("  12%^&*");
             //Date of Birth
             I.DOB.Click();
-            I.Day.Click(); //13 feb
+           // I.Day.Click(); //13 feb
             I.okButton.Click();
             I.PhoneNo.SendKeys("034988547664444444444444");
             I.Nationality.SendKeys("%^&*");
@@ -69,7 +73,7 @@ namespace ScientificCalculator.Pages
             I.Designation.SendKeys("     ");
             //Date of Birth
             I.DOB.Click();
-            I.Day.Click(); //13 feb
+           // I.Day.Click(); //13 feb
             I.okButton.Click();
             I.PhoneNo.SendKeys("    ");
             I.Nationality.SendKeys("    ");
@@ -78,95 +82,182 @@ namespace ScientificCalculator.Pages
             I.Male.Click();
             I.Female.Click();
         }
-        public void SelectDateOfBirth(string expectedDay, string expectedMonthYear)
+
+        public void test(string exdate, string exyear )
         {
             // Click on the Date of Birth field
             I.DOB.Click();
-            string Headerdate = I.HeaderDate.Text;
-            string HeaderYear = I.HeaderYear.Text;
-            string currentMonthYear = $"{Headerdate} {HeaderYear}"; // Combine header date and year
-            string Monthview = I.Monthview.Text;
 
-            //while(!(Headerdate.Equals(expectedMonthYear)) && (HeaderYear.Equals(expectedDay)))
-            //    {
+            // Get the current header date and year
+            string headerDate = I.HeaderDate.Text;
+            string headerYear = I.HeaderYear.Text;
+            string currentMonthYear = $"{headerDate} {headerYear}"; // Combine header date and year
 
-            //    }
+            while (!(headerDate.Equals(exdate)) && (headerYear.Equals(exyear)))
+            {
+                // Navigate to next month
+                I.NextMonth.Click();
+                break;
+            }
+        }
+        public void test1(string exdate, string exyear)
+        {
+            // Click on the Date of Birth field
+            I.DOB.Click();
+
+            // Get the current header date and year
+            string headerDate = I.HeaderDate.Text;
+            string headerYear = I.HeaderYear.Text;
+            string currentMonthYear = $"{headerDate} {headerYear}"; // Combine header date and year
+
+            // Define a regular expression pattern to match the month
+            string[] dateParts = headerDate.Split(' ');
+
+            // Use Regex.Match to find the first occurrence of the month in the header date
+            string month = dateParts[dateParts.Length - 1];
 
 
             // Parse the expected month and year
-            string[] expectedMonthYearParts = expectedMonthYear.Split(' ');
-            int expectedMonth = DateTime.ParseExact(expectedMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
-            int expectedYear = int.Parse(expectedMonthYearParts[1]);
+            string[] expectedDateParts = exdate.Split(' ');
+            string expectedMonth = expectedDateParts[2];
+            string exday = expectedDateParts[1];
 
-            // Parse the current month and year
-            string[] currentMonthYearParts = currentMonthYear.Split(' ');
-            int currentMonth = DateTime.ParseExact(currentMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
-            int currentYear = int.Parse(currentMonthYearParts[1]);
-
-            // While loop to navigate to the desired month and year
-            while (true)
+            int expectedYear = int.Parse(exyear);
+            if (expectedYear == int.Parse(headerYear) && (expectedMonth == month))
             {
-                if (currentMonth == expectedMonth && currentYear == expectedYear)
+                // Find and click on the day element
+                I.Day(exday).Click();
+                I.okButton.Click();
+            }
+            // Compare the current month and year with the expected
+            while (!(headerDate.Equals(exdate) && headerYear.Equals(exyear)))
+            {
+                if (expectedYear == int.Parse(headerYear) && string.Compare(expectedMonth, month, StringComparison.CurrentCultureIgnoreCase) < 0)
                 {
-                    // If the current month and year match the expected, select the day and break the loop
-                    I.Day.Click();
+                    I.Day(exday).Click();
+                    I.okButton.Click();
                     break;
                 }
-                else if (expectedYear > currentYear || (expectedYear == currentYear && expectedMonth > currentMonth))
+                // If expected year is greater than current year or if expected month is greater than current month
+                else if (expectedYear > int.Parse(headerYear) || string.Compare(expectedMonth, headerDate, StringComparison.CurrentCultureIgnoreCase) > 0)
                 {
+                    // Navigate to next month
                     I.NextMonth.Click();
+                    I.Day(exday).Click();
+
+            break;
                 }
-                else if (expectedYear < currentYear || (expectedYear == currentYear && expectedMonth < currentMonth))
+                else if (expectedYear < int.Parse(headerYear) || string.Compare(expectedMonth, headerDate, StringComparison.CurrentCultureIgnoreCase) > 0)
+
                 {
+                    // Navigate to previous month
                     I.PrevMonth.Click();
+                    // Construct XPath for the expected day
+                    string dayXPath = $"//android.view.View[@content-desc=\"{exday}\"]";
+                    // Find and click on the day element
+                    driver.FindElement(By.XPath(dayXPath)).Click();
+                    I.okButton.Click();
+                    break; 
                 }
 
-                // Update the current month and year for the next iteration
-                Headerdate = I.HeaderDate.Text;
-                HeaderYear = I.HeaderYear.Text;
-                currentMonthYear = $"{Headerdate} {HeaderYear}";
-                currentMonthYearParts = currentMonthYear.Split(' ');
-                currentMonth = DateTime.ParseExact(currentMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
-                currentYear = int.Parse(currentMonthYearParts[1]);
-            }
+                else
+                {
+                  
+                    break;
+                }
 
-            I.okButton.Click();
+                // Update the current header date and year
+                headerDate = I.HeaderDate.Text;
+                headerYear = I.HeaderYear.Text;
+            }
         }
 
-        //while (true)
-        //{
-        //    // Find the month and year header
 
-        //    string calendarMonthYear = I.HeaderDate.Text;
-
-        //    if (calendarMonthYear.Equals(expectedMonthYear))
+        //public void SelectDateOfBirth(string expectedDay, string expectedMonthYear)
         //    {
-        //        // Find and click on the expected day
-        //        try
+        //        // Click on the Date of Birth field
+        //        I.DOB.Click();
+
+        //        // Get the current header date and year
+        //        string headerDate = I.HeaderDate.Text;
+        //        string headerYear = I.HeaderYear.Text;
+        //        string currentMonthYear = $"{headerDate} {headerYear}"; // Combine header date and year
+
+        //        // Parse the expected month and year
+        //        string[] expectedMonthYearParts = expectedMonthYear.Split(' ');
+        //        int expectedMonth = DateTime.ParseExact(expectedMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
+        //        int expectedYear = int.Parse(expectedMonthYearParts[1]);
+
+        //        // Parse the current month and year
+        //        string[] currentMonthYearParts = currentMonthYear.Split(' ');
+        //        int currentMonth = DateTime.ParseExact(currentMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
+        //        int currentYear = int.Parse(currentMonthYearParts[1]);
+
+        //        // While loop to navigate to the desired month and year
+        //        while (currentMonth != expectedMonth || currentYear != expectedYear)
         //        {
-        //            driver.FindElementByXPath($"//android.view.View[@text='{expectedDay}']").Click();
-        //            break;
+        //            if (currentYear < expectedYear || (currentYear == expectedYear && currentMonth < expectedMonth))
+        //            {
+        //                // Navigate to next month
+        //                I.NextMonth.Click();
+        //            }
+        //            else if (currentYear > expectedYear || (currentYear == expectedYear && currentMonth > expectedMonth))
+        //            {
+        //                // Navigate to previous month
+        //                I.PrevMonth.Click();
+        //            }
+
+        //            // Update the current month and year for the next iteration
+        //            headerDate = I.HeaderDate.Text;
+        //            headerYear = I.HeaderYear.Text;
+        //            currentMonthYear = $"{headerDate} {headerYear}";
+        //            currentMonthYearParts = currentMonthYear.Split(' ');
+        //            currentMonth = DateTime.ParseExact(currentMonthYearParts[0], "MMMM", CultureInfo.CurrentCulture).Month;
+        //            currentYear = int.Parse(currentMonthYearParts[1]);
         //        }
 
-        //        catch (NoSuchElementException)
-        //        {
-        //            // Handle the case when the expected day is not found
-        //            Console.WriteLine($"Day {expectedDay} not found for the selected month and year.");
-        //            break;
-        //        }
+        //    // Select the expected day
+        //    I.Day(exday).Click();
+
+        //    // Click the OK button to confirm the selected date
+        //    I.okButton.Click();
         //    }
-        //    else
-        //    {
-        //        // Navigate to the next month
-        //        I.NextMonth.Click();
-        //    }
-        //}
+
+
+            //while (true)
+            //{
+            //    // Find the month and year header
+
+            //    string calendarMonthYear = I.HeaderDate.Text;
+
+            //    if (calendarMonthYear.Equals(expectedMonthYear))
+            //    {
+            //        // Find and click on the expected day
+            //        try
+            //        {
+            //            driver.FindElementByXPath($"//android.view.View[@text='{expectedDay}']").Click();
+            //            break;
+            //        }
+
+            //        catch (NoSuchElementException)
+            //        {
+            //            // Handle the case when the expected day is not found
+            //            Console.WriteLine($"Day {expectedDay} not found for the selected month and year.");
+            //            break;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        // Navigate to the next month
+            //        I.NextMonth.Click();
+            //    }
+            //}
+        }
+
+
+
+
     }
-
-
-
-
-}
 
 
 

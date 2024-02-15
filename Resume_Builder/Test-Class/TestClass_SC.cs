@@ -5,35 +5,23 @@ using ScientificCalculator.Core;
 using ScientificCalculator.Pages;
 
 namespace ScientificCalculator.Test_Class
-
 {
     [TestClass]
-     public class TestClass_SC : TestInitialize
+    public class TestClass_SC : TestInitialize
     {
         PersonalInfo P;
 
-      //  [TestMethod]
-       public void Create_Cv()
-        {
-            P = new PersonalInfo(driver);
-            P.PersonalInfo_ValidInfo();
-            P.PersonalInfo_InValidInfo();
-            P.PersonalInfo_SpacesInfo();
-
-        }
-        //EMI e;
         [TestMethod]
-        public void Select_Date_Of_Birth()
+        public void Create_Cv()
         {
             // Initialize Appium driver and navigate to the desired screen
+            // Assuming driver is initialized in the base class TestInitialize
 
-            // Initialize DatePickerHelper with the Appium driver
-            PersonalInfo datePickerHelper = new PersonalInfo(driver);
-            // Select the date of birth (e.g., 15th February 1990)
-            datePickerHelper.SelectDateOfBirth("2", "February 2024");
+            // Initialize PersonalInfo with the Appium driver
+            P = new PersonalInfo(driver);
 
-            // Additional assertions or actions if needed
+            // Call the test1 method with the expected date and year
+            P.test1("Thu 15 Feb", "2024");
         }
-      
     }
 }
