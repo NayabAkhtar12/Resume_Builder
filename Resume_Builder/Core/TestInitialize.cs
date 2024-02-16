@@ -44,8 +44,8 @@ namespace ScientificCalculator.Core
         {
             AppiumOptions Cap = new AppiumOptions();
             Cap.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
-            Cap.AddAdditionalCapability(MobileCapabilityType.DeviceName, "Galaxy S8");
-            Cap.AddAdditionalCapability(MobileCapabilityType.Udid, "ce11171b9bd3d81105");
+            Cap.AddAdditionalCapability(MobileCapabilityType.DeviceName, "Galaxy s8");
+            Cap.AddAdditionalCapability(MobileCapabilityType.Udid, "3da2d3f4");
             Cap.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "9");
             Cap.AddAdditionalCapability("appium:automationName", AutomationName.AndroidUIAutomator2);
       //    Cap.AddAdditionalCapability(AndroidMobileCapabilityType.AppPackage, "com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader");

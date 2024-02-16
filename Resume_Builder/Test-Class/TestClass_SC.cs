@@ -20,8 +20,7 @@ namespace ScientificCalculator.Test_Class
             // Initialize PersonalInfo with the Appium driver
             P = new PersonalInfo(driver);
 
-            // Call the test1 method with the expected date and year
-            P.test1("Thu 15 Feb", "2024");
+            P.SelectDateofBirth("15 April 2025"); 
         }
     }
 }
