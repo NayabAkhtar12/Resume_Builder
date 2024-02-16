@@ -4,26 +4,27 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Mac;
 using OpenQA.Selenium.Support.UI;
-using ScientificCalculator.Core;
+using ResumeBuilder.Core;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
 
 
-namespace ScientificCalculator.Pages
+namespace ResumeBuilder.Pages
 {
     //By default Its access modifier is Internal
     class PersonalInfo : TestInitialize
     {
-        private ResumeBuilderIds I;
+        private PersonalInfoIds I;
 
         public PersonalInfo(AppiumDriver<IWebElement> driver)
         {
             // Initialize I1 in the constructor
-            I = new ResumeBuilderIds(driver);
+            I = new PersonalInfoIds(driver);
         }
         private TestInitialize T;
 
@@ -124,11 +125,10 @@ namespace ScientificCalculator.Pages
 
             // Convert the abbreviated month to full month name
             string exmonthAbbreviation = monthMapping[exmonth];  //I want to store feb here
-            I.test.Click();
+            //I.test.Click();
             string str=I.currentDayMonthElement.Text;
-
-            // Navigate to the expected month and year
-            while (!(cmonth.Equals(exmonthAbbreviation) && CYear.Equals(exyear)))
+            //Navigate to the expected month and year
+                while (!(cmonth.Equals(exmonthAbbreviation) && CYear.Equals(exyear)))
             {
                 I.NextMonth.Click();
                 I.ClickOnCurrentDay(cday);

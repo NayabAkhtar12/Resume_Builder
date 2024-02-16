@@ -29,8 +29,8 @@ D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualS
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
-D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Scientific Calculator.dll
-D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Scientific Calculator.pdb
+D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\ResumeBuilder.dll
+D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\ResumeBuilder.pdb
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Appium.Net.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Castle.Core.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
@@ -50,5 +50,5 @@ D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\WebDriver.Support
 D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.AssemblyReference.cache
 D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.CoreCompileInputs.cache
 D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.CopyComplete
-D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\Scientific Calculator.dll
-D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\Scientific Calculator.pdb
+D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\ResumeBuilder.dll
+D:\Automation-Projects\Resume_Builder\Resume_Builder\obj\Debug\ResumeBuilder.pdb

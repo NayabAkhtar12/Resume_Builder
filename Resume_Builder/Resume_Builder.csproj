@@ -8,8 +8,8 @@
     <ProjectGuid>{6C126CF9-2E3A-418A-BE0C-AEF625C0E19E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScientificCalculator</RootNamespace>
-    <AssemblyName>Scientific Calculator</AssemblyName>
+    <RootNamespace>ResumeBuilder</RootNamespace>
+    <AssemblyName>ResumeBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -72,8 +72,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Identifiers\EMI_Identifiers.cs" />
-    <Compile Include="Pages\Identifiers\ResumeBuilderIds.cs" />
+    <Compile Include="Pages\Create CV\Academics.cs" />
+    <Compile Include="Pages\Identifiers\AcademicsIds.cs" />
+    <Compile Include="Pages\Identifiers\PersonalInfoIds.cs" />
     <Compile Include="Pages\Create CV\PersonalInfo.cs" />
     <Compile Include="Test-Class\TestClass_SC.cs" />
     <Compile Include="Core\TestInitialize.cs" />

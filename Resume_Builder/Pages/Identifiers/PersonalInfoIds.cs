@@ -6,13 +6,13 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace ScientificCalculator.Pages
+namespace ResumeBuilder.Pages
 {
-    public class ResumeBuilderIds
+    public class PersonalInfoIds
     {
         private AppiumDriver<IWebElement> driver;
 
-        public ResumeBuilderIds(AppiumDriver<IWebElement> driver)
+        public PersonalInfoIds(AppiumDriver<IWebElement> driver)
         {
             this.driver = driver;
         }
@@ -83,5 +83,7 @@ namespace ScientificCalculator.Pages
         public IWebElement HeaderYear => driver.FindElement(By.Id("android:id/date_picker_header_year"));
 
         public IWebElement Dayelement => driver.FindElementById("android:id/date_picker_header_date");
+
+     
     }
 }

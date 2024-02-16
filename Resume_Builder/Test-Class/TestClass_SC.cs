@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
-using ScientificCalculator.Core;
-using ScientificCalculator.Pages;
+using ResumeBuilder.Core;
+using ResumeBuilder.Pages;
 
-namespace ScientificCalculator.Test_Class
+namespace ResumeBuilder.Test_Class
 {
     [TestClass]
     public class TestClass_SC : TestInitialize

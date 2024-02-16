@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 using System;
 
 
-namespace ScientificCalculator.Core
+namespace ResumeBuilder.Core
 {
     public class TestInitialize
     {
