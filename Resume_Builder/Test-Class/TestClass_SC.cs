@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Android;
 using ResumeBuilder.Core;
 using ResumeBuilder.Pages;
+using ResumeBuilder.Pages.Create_CV;
 
 namespace ResumeBuilder.Test_Class
 {
@@ -10,9 +11,9 @@ namespace ResumeBuilder.Test_Class
     public class TestClass_SC : TestInitialize
     {
         PersonalInfo P;
-
-        [TestMethod]
-        public void Create_Cv()
+        Academics A;
+        //[TestMethod]
+        public void PersonalInfo()
         {
             // Initialize Appium driver and navigate to the desired screen
             // Assuming driver is initialized in the base class TestInitialize
@@ -22,5 +23,15 @@ namespace ResumeBuilder.Test_Class
 
             P.SelectDateofBirth("15 April 2025"); 
         }
+
+        [TestMethod]
+        public void Academics()
+        { 
+            A = new Academics(driver);
+            A.ValidInfo();
+            A.InValidInfo();
+            A.PersonalInfo_SpacesInfo();
+        }
+
     }
 }

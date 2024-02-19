@@ -1,18 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.Mac;
-using OpenQA.Selenium.Support.UI;
 using ResumeBuilder.Core;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.Remoting.Messaging;
-using System.Text.RegularExpressions;
-
 
 namespace ResumeBuilder.Pages
 {
@@ -26,9 +15,6 @@ namespace ResumeBuilder.Pages
             // Initialize I1 in the constructor
             I = new PersonalInfoIds(driver);
         }
-        private TestInitialize T;
-
-     
 
         public void PersonalInfo_ValidInfo()
         {
