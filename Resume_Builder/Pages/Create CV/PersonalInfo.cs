@@ -16,6 +16,15 @@ namespace ResumeBuilder.Pages
             I = new PersonalInfoIds(driver);
         }
 
+        public void ImageUploading(string img)
+        {
+            I.AddImage.Click();
+            I.FromGallery.Click();
+            //Select an Image
+           
+            I.Image.Click();
+
+        }
         public void PersonalInfo_ValidInfo()
         {
             //Valid Personal Info

@@ -12,7 +12,7 @@ namespace ResumeBuilder.Test_Class
     {
         PersonalInfo P;
         Academics A;
-        //[TestMethod]
+        [TestMethod]
         public void PersonalInfo()
         {
             // Initialize Appium driver and navigate to the desired screen
@@ -20,11 +20,11 @@ namespace ResumeBuilder.Test_Class
 
             // Initialize PersonalInfo with the Appium driver
             P = new PersonalInfo(driver);
-
-            P.SelectDateofBirth("15 April 2025"); 
+            P.ImageUploading("D:\\Automation-Projects\\Resume_Builder\\Resume_Builder\\Pages\\images.jpg");
+            //P.SelectDateofBirth("15 April 2025"); 
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Academics()
         { 
             A = new Academics(driver);
