@@ -1,92 +1,120 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.MultiTouch;
+using OpenQA.Selenium.Support.UI;
 using ResumeBuilder.Core;
+using System;
 using System.Collections.Generic;
 
 namespace ResumeBuilder.Pages
 {
     //By default Its access modifier is Internal
-    class PersonalInfo : TestInitialize
+    class PersonalInfo 
     {
-        private PersonalInfoIds I;
+        private AppiumDriver<IWebElement> driver;
+
+        //private PersonalInfoIds I;
 
         public PersonalInfo(AppiumDriver<IWebElement> driver)
         {
             // Initialize I1 in the constructor
-            I = new PersonalInfoIds(driver);
+            // I = new PersonalInfoIds(driver);
+            this.driver = driver;
         }
 
-        public void ImageUploading(string img)
+        public void ImageUploading(string imageName)
         {
-            I.AddImage.Click();
-            I.FromGallery.Click();
-            //Select an Image
-           
-            I.Image.Click();
+            // Scroll until the desired image is visible
+            ScrollToImage(imageName);
 
+            // Find the image element by its resource ID or other attributes
+            IWebElement imageElement = driver.FindElement(By.XPath($"//android.widget.ImageView[@content-desc='{imageName}']"));
+
+            // Click on the image to select it
+            imageElement.Click();
         }
-        public void PersonalInfo_ValidInfo()
+        private void ScrollToImage(string imageName)
+        {
+            // Perform scrolling until the desired image is in view
+            // Example: Scroll horizontally until the image is found
+            TouchAction touchAction = new TouchAction(driver);
+            touchAction.Press(100, 500). // Initial touch location
+                        Wait(500). // Wait for 500 milliseconds
+                        MoveTo(900, 500). // Move horizontally
+                        Release(). // Release touch
+                        Perform();
+        }
+        //public void ImageUploading(string img)
+        //{
+        //    I.AddImage.Click();
+        //    I.FromGallery.Click();
+        //    //Select an Image
+
+        //    I.Image.Click();
+
+        //}
+        public void PersonalInfo_Valid()
         {
             //Valid Personal Info
             // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-            I.Name.SendKeys("Nayab");
-            I.Designation.SendKeys("SQA");
+            Name.SendKeys("NayabAkhtar");
+            Designation.SendKeys("SQA");
             //Date of Birth
-            I.DOB.Click();
+            DOB.Click();
             //I.Day.Click(); //13 feb
-            I.okButton.Click();
-            I.PhoneNo.SendKeys("03498854766");
-            I.Nationality.SendKeys("Pakistani");
-            I.Email.SendKeys("nayabf52@gmail.com");
-            I.Address.SendKeys("Bahria Phase 8");
-            I.Female.Click();
+            okButton.Click();
+            PhoneNo.SendKeys("03498854766");
+            Nationality.SendKeys("Pakistani");
+            Email.SendKeys("nayabf52@gmail.com");
+            Address.SendKeys("Bahria Phase 8");
+            Female.Click();
 
         }
 
-        public void PersonalInfo_InValidInfo()
+        public void PersonalInfo_InValid()
         {
             //InValid Personal Info
             // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-            I.Name.SendKeys("%&*");
-            I.Designation.SendKeys("  12%^&*");
+            Name.SendKeys("%&*");
+            Designation.SendKeys("  12%^&*");
             //Date of Birth
-            I.DOB.Click();
-           // I.Day.Click(); //13 feb
-            I.okButton.Click();
-            I.PhoneNo.SendKeys("034988547664444444444444");
-            I.Nationality.SendKeys("%^&*");
-            I.Email.SendKeys("nayabf52er355");
-            I.Address.SendKeys("$%^&%G");
-            I.Male.Click();
-            I.Female.Click();
+            DOB.Click();
+            // I.Day.Click(); //13 feb
+            okButton.Click();
+            PhoneNo.SendKeys("034988547664444444444444");
+            Nationality.SendKeys("%^&*");
+            Email.SendKeys("nayabf52er355");
+            Address.SendKeys("$%^&%G");
+            Male.Click();
+            Female.Click();
         }
 
-        public void PersonalInfo_SpacesInfo()
+        public void PersonalInfo_Spaces()
         {
             //InValid Personal Info
             // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-            I.Name.SendKeys("   ");
-            I.Designation.SendKeys("     ");
+            Name.SendKeys("   ");
+            Designation.SendKeys("     ");
             //Date of Birth
-            I.DOB.Click();
-           // I.Day.Click(); //13 feb
-            I.okButton.Click();
-            I.PhoneNo.SendKeys("    ");
-            I.Nationality.SendKeys("    ");
-            I.Email.SendKeys("   ");
-            I.Address.SendKeys("   ");
-            I.Male.Click();
-            I.Female.Click();
+            DOB.Click();
+            // I.Day.Click(); //13 feb
+            okButton.Click();
+            PhoneNo.SendKeys("    ");
+            Nationality.SendKeys("    ");
+            Email.SendKeys("   ");
+            Address.SendKeys("   ");
+            Male.Click();
+            Female.Click();
         }
 
         public void SelectDateofBirth(string exdate)
         {
             // Click on the Date of Birth field
-            I.DOB.Click();
+            DOB.Click();
 
             // Get the current header date and year
-            string headerDate = I.HeaderDate.Text;
-            string CYear = I.HeaderYear.Text;
+            string headerDate = HeaderDate.Text;
+            string CYear = HeaderYear.Text;
             string currentMonthYear = $"{headerDate} {CYear}"; // Combine header date and year
 
             // Define a regular expression pattern to match the month
@@ -100,7 +128,7 @@ namespace ResumeBuilder.Pages
             string exmonth = expectedDateParts[1]; // same as expected month
             string exyear = expectedDateParts[2];      // Year as a string
 
-            string month= I.Monthview.Text;
+            string month = Monthview.Text;
             // Mapping of abbreviated month names to full month names
             Dictionary<string, string> monthMapping = new Dictionary<string, string>
     {
@@ -121,20 +149,86 @@ namespace ResumeBuilder.Pages
             // Convert the abbreviated month to full month name
             string exmonthAbbreviation = monthMapping[exmonth];  //I want to store feb here
             //I.test.Click();
-            string str=I.currentDayMonthElement.Text;
+            string str = currentDayMonthElement.Text;
             //Navigate to the expected month and year
-                while (!(cmonth.Equals(exmonthAbbreviation) && CYear.Equals(exyear)))
+            while (!(cmonth.Equals(exmonthAbbreviation) && CYear.Equals(exyear)))
             {
-                I.NextMonth.Click();
-                I.ClickOnCurrentDay(cday);
-                cmonth = I.HeaderDate.Text.Split(' ')[1]; // Update cmonth with the new month
-                CYear = I.HeaderYear.Text;
+                NextMonth.Click();
+               ClickOnCurrentDay(cday);
+                cmonth = HeaderDate.Text.Split(' ')[1]; // Update cmonth with the new month
+                CYear = HeaderYear.Text;
             }
 
             // Click on the expected day element
-            I.GetDayElement(exdate).Click();
-            I.okButton.Click();
+            GetDayElement(exdate).Click();
+            okButton.Click();
         }
+
+        //Identifiers:
+
+        private IWebElement Imaget => driver.FindElementByXPath("(//android.widget.ImageView[@resource-id=\"com.android.documentsui:id/icon_thumb\"])[3]");
+        private IWebElement Image => driver.FindElementByXPath("(//android.widget.ImageView[@resource-id=\"com.android.documentsui:id/icon_thumb\"])[3]");
+        private IWebElement Name => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/enterName"));
+        private IWebElement Designation => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/designation"));
+        private IWebElement DOB => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/dob"));
+        private IWebElement PhoneNo => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/phoneNo"));
+        private IWebElement Nationality => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/nationality"));
+        private IWebElement Email => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/email"));
+        private IWebElement Address => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/address"));
+        private IWebElement Male => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/male"));
+        private IWebElement Female => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/female"));
+        private IWebElement Other => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/other"));
+        private IWebElement AddImage => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
+        private IWebElement ChooseImage => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
+        private IWebElement FromGallery => driver.FindElement(By.XPath(@"//android.widget.TextView[@text=""From Gallery""]"));
+        private readonly TimeSpan timeout = TimeSpan.FromSeconds(10); // Adjust timeout as needed
+        private IWebElement test => driver.FindElement(By.XPath("//android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView"));
+        private IWebElement currentDayMonthElement => driver.FindElement(By.Id("android:id/date_picker_header_date"));
+        private IWebElement Monthview => driver.FindElement(By.XPath("//android.view.View[@resource-id=\"android:id/month_view\"]"));
+        private IWebElement okButton => driver.FindElement(By.XPath("//android.widget.Button[@resource-id='android:id/button1']"));
+        private IWebElement NextMonth => driver.FindElement(By.Id("android:id/next"));
+        private IWebElement PrevMonth => driver.FindElement(By.Id("android:id/prev"));
+        private IWebElement DatePicker => driver.FindElement(By.XPath("//android.widget.DatePicker"));
+        private IWebElement HeaderDate => driver.FindElement(By.XPath("//android.widget.TextView[@resource-id=\"android:id/date_picker_header_date\"]"));
+        private IWebElement HeaderYear => driver.FindElement(By.Id("android:id/date_picker_header_year"));
+        private IWebElement Dayelement => driver.FindElementById("android:id/date_picker_header_date");
+        private IWebElement GetDayElement(string expectedDay)
+        {
+            try
+            {
+                string xpath = $"//android.view.View[@content-desc='{expectedDay}']";
+                var wait = new WebDriverWait(driver, timeout);
+                return wait.Until(d => d.FindElement(By.XPath(xpath)));
+
+            }
+            catch (NoSuchElementException ex)
+            {
+                // Log the error or handle it according to your test scenario
+                Console.WriteLine($"Element with content-desc '{expectedDay}' not found: {ex.Message}");
+                throw; // Re-throw the exception to indicate failure
+            }
+        }
+
+        private IWebElement ClickOnCurrentDay(string currentDay)
+        {
+            try
+            {
+                string xpath = $"//android.view.View[@text='{currentDay}']";
+                var wait = new WebDriverWait(driver, timeout);
+                var currentDayElement = wait.Until(d => d.FindElement(By.XPath(xpath)));
+                currentDayElement.Click();
+                return currentDayElement;
+            }
+            catch (NoSuchElementException ex)
+            {
+                // Log the error or handle it according to your test scenario
+                Console.WriteLine($"Element with text '{currentDay}' not found: {ex.Message}");
+                throw; // Re-throw the exception to indicate failure
+            }
+        }
+
+
+
     }
 }
 

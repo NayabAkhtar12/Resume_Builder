@@ -15,6 +15,7 @@ namespace ResumeBuilder.Pages
         public PersonalInfoIds(AppiumDriver<IWebElement> driver)
         {
             this.driver = driver;
+
         }
 
         //Identifiers

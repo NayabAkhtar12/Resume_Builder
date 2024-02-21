@@ -1,83 +1,99 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Interactions;
-using ResumeBuilder.Core;
+using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
-    public class Academics :TestInitialize
+    public class Academics 
     {
-        private AcademicsIds I;
-        private Actions action; // Declare Actions object at the class level
+        // private AcademicsIds I;
+        private AppiumDriver<IWebElement> driver;
+        private Actions action; 
 
         public Academics(AppiumDriver<IWebElement> driver) 
         {
-            I = new AcademicsIds(driver);
-           action = new Actions(driver);
+            this.driver = driver;
+            action = new Actions(driver);
 
         }
         public void ValidInfo()
         {
             //Valid  Info
-         
-            I.Mobile.Click();
+            MobileElement();
             // Send keys "hop" using the Actions class
             action.SendKeys("CodersInsignPVT LTD").Perform();
           //  action.MoveToElement(I.SaveAndNext).Click().Perform();
          // driver.HideKeyboard();
-            I.Major_Course.SendKeys("SQA");
+            Major_Course.SendKeys("SQA");
             //Date of Birth
-            I.Degree.SendKeys("Software Engineering");
-            I.SDate.Click();
-          I.Start_Date.Click(); //13 feb
-            I.OK.Click();
-            I.EDate.Click();
-            I.End_Date.Click(); //13 feb
-            I.OK.Click();
-            I.SaveAndNext.Click();
+            Degree.SendKeys("Software Engineering");
+            SDate.Click();
+            Start_Date.Click(); //13 feb
+            OK.Click();
+            EDate.Click();
+            End_Date.Click(); //13 feb
+            OK.Click();
+            SaveAndNext.Click();
 
         }
 
         public void InValidInfo()
         {
             //InValid  Info
-            I.Mobile.Click();
+            MobileElement();
             // Send keys "hop" using the Actions class
             action.SendKeys("%&*").Perform();
-            I.Major_Course.SendKeys("  12%^&*");
-            I.Degree.SendKeys("034988547664444444444444");
-            I.SDate.Click();
-            I.Start_Date.Click(); //13 feb
-            I.OK.Click();
-            I.EDate.Click();
-            I.End_Date.Click(); //13 feb
-            I.OK.Click();
-            I.SaveAndNext.Click();
+            Major_Course.SendKeys("  12%^&*");
+            Degree.SendKeys("034988547664444444444444");
+            SDate.Click();
+            Start_Date.Click(); //13 feb
+            OK.Click();
+            EDate.Click();
+            End_Date.Click(); //13 feb
+            OK.Click();
+            SaveAndNext.Click();
         }
 
-        public void PersonalInfo_SpacesInfo()
+        public void PersonalInfo_Spaces()
         {
             //InValid Personal Info
-            I.Mobile.Click();
+            MobileElement();
             // Send keys "hop" using the Actions class
             action.SendKeys("             ").Perform();
-            I.Major_Course.SendKeys("     ");  
-            I.Degree.SendKeys("    ");
-            I.SDate.Click();
-            I.Start_Date.Click(); //13 feb
-            I.OK.Click();
-            I.EDate.Click();
-            I.End_Date.Click(); //13 feb
-            I.OK.Click();
-            I.SaveAndNext.Click();
+            Major_Course.SendKeys("     ");  
+            Degree.SendKeys("    ");
+            SDate.Click();
+            Start_Date.Click(); //13 feb
+            OK.Click();
+            EDate.Click();
+            End_Date.Click(); //13 feb
+            OK.Click();
+            SaveAndNext.Click();
         }
 
+        //Identifiers
+         IWebElement Ist => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
+
+         IWebElement Major_Course => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/major"));
+
+         IWebElement Degree => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/course"));
+         IWebElement Start_Date => driver.FindElement(By.XPath(@"//android.view.View[@content-desc=""18 February 2024""]"));
+         IWebElement End_Date => driver.FindElement(By.XPath(@"//android.view.View[@content-desc=""27 February 2024""]"));
+         IWebElement OK => driver.FindElement(By.Id(@"android:id/button1"));
+         IWebElement Cancel => driver.FindElement(By.Id(@"//android.widget.Button[@resource-id=""android:id/button2""]"));
+         IWebElement SaveAndNext => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/save"));
+         IWebElement SDate => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/startDate"));
+        private IWebElement EDate => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/endDate"));
+       private IWebElement Mobile => driver.FindElement(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
+
+
+        private void MobileElement()
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            var element = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/institute")));
+            element.Click();
+        }
     }
 }
