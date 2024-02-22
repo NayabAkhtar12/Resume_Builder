@@ -39,7 +39,7 @@ namespace ResumeBuilder.Pages.Create_CV
 
         }
 
-        public void InValidInfo()
+        public void InValidInfo_Spaces()
         {
             //InValid  Info
             MobileElement();
@@ -56,7 +56,7 @@ namespace ResumeBuilder.Pages.Create_CV
             SaveAndNext.Click();
         }
 
-        public void PersonalInfo_Spaces()
+        public void AcademicInfo()
         {
             //InValid Personal Info
             MobileElement();
@@ -73,8 +73,15 @@ namespace ResumeBuilder.Pages.Create_CV
             SaveAndNext.Click();
         }
 
+        public void NavigateBack()
+        {
+            BackButton.Click();
+        }
         //Identifiers
-         IWebElement Ist => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
+        private IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
+        private IWebElement Discard => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/discard");
+
+        IWebElement Ist => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
 
          IWebElement Major_Course => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/major"));
 

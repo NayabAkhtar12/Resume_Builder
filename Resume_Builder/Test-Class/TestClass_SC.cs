@@ -28,21 +28,29 @@ namespace ResumeBuilder.Test_Class
         PersonalInfo P;
         Academics A;
 
-        //[TestMethod]
+        [TestMethod]
         public void PersonalInfo()
         {
             // Initialize PersonalInfo with the Appium driver
             P = new PersonalInfo(driver);
-            P.ImageUploading();
-            P.PersonalInfo_Valid();
+           //P.OpenPersonalInfo();
+         //  P.ImageUploading();
+           P.PersonalInfo_Valid();
+           // P.PersonalInfo_InValid();
+           // P.PersonalInfo_Spaces();
+            P.NavigateBack();
             //P.SelectDateofBirth("15 April 2025"); 
         }
 
-        [TestMethod]
+
+       // [TestMethod]
         public void Acedemics()
         {
             Academics A = new Academics(driver);
             A.ValidInfo();
+            A.InValidInfo_Spaces();
+            A.AcademicInfo();
+            A.NavigateBack();
         }
 
     }

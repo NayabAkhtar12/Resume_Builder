@@ -1,8 +1,10 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.Android.UiAutomator;
+using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Support.UI;
-using ResumeBuilder.Core;
 using System;
 using System.Collections.Generic;
 
@@ -15,6 +17,7 @@ namespace ResumeBuilder.Pages
 
         //private PersonalInfoIds I;
 
+
         public PersonalInfo(AppiumDriver<IWebElement> driver)
         {
             // Initialize I1 in the constructor
@@ -22,41 +25,66 @@ namespace ResumeBuilder.Pages
             this.driver = driver;
         }
 
-        public void ImageUploading(string imageName)
+        public void OpenPersonalInfo()
         {
-            // Scroll until the desired image is visible
-            ScrollToImage(imageName);
-
-            // Find the image element by its resource ID or other attributes
-            IWebElement imageElement = driver.FindElement(By.XPath($"//android.widget.ImageView[@content-desc='{imageName}']"));
-
-            // Click on the image to select it
-            imageElement.Click();
+            CreateCV.Click();
+            AdClose.Click();
+            Personal_Info.Click();
         }
-        private void ScrollToImage(string imageName)
+        public void ImageUploading()
         {
-            // Perform scrolling until the desired image is in view
-            // Example: Scroll horizontally until the image is found
-            TouchAction touchAction = new TouchAction(driver);
-            touchAction.Press(100, 500). // Initial touch location
-                        Wait(500). // Wait for 500 milliseconds
-                        MoveTo(900, 500). // Move horizontally
-                        Release(). // Release touch
-                        Perform();
+            AddImage.Click();
+            FromGallery.Click();
+
+            // Scroll to the desired image
+           ScrollToImage();
+
+            // Click on the image
+            Image.Click();
         }
-        //public void ImageUploading(string img)
-        //{
-        //    I.AddImage.Click();
-        //    I.FromGallery.Click();
-        //    //Select an Image
 
-        //    I.Image.Click();
+        private void ScrollToImage()
+        {
+            // Scroll until the image becomes visible
+            while (!IsImageVisible())
+            {
+                // Scroll down by swiping up
+                SwipeUp();
+            }
+        }
 
-        //}
+        private bool IsImageVisible()
+        {
+            // Check if the image element is visible on the screen
+            try
+            {
+                return Image.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        private void SwipeUp()
+        {
+            // Perform a swipe up gesture to scroll down
+            int startX = driver.Manage().Window.Size.Width / 2;
+            int startY = (int)(driver.Manage().Window.Size.Height * 0.8);  // Start swipe from 80% of the screen height
+            int endY = (int)(driver.Manage().Window.Size.Height * 0.2);    // Swipe up to 20% of the screen height
+
+            TouchAction swipeAction = new TouchAction(driver);
+            swipeAction
+                .Press(x: startX, y: startY)
+                .MoveTo(x: startX, y: endY)
+                .Release()
+                .Perform();
+        }
+
+
         public void PersonalInfo_Valid()
         {
             //Valid Personal Info
-            // Assert.IsNotNull(I, "Identifiers instance is not initialized");
             Name.SendKeys("NayabAkhtar");
             Designation.SendKeys("SQA");
             //Date of Birth
@@ -67,8 +95,21 @@ namespace ResumeBuilder.Pages
             Nationality.SendKeys("Pakistani");
             Email.SendKeys("nayabf52@gmail.com");
             Address.SendKeys("Bahria Phase 8");
-            Female.Click();
+            IWebElement listItem = driver.FindElement(MobileBy.AndroidUIAutomator(
+    "new UiScrollable(new UiSelector().scrollable(true))" +
+    ".scrollIntoView(new UiSelector().text(\"Female\"))"));
 
+            // Click on the element
+            listItem.Click();
+
+
+    //        AndroidElement listItem = (AndroidElement)driver.FindElement(MobileBy.AndroidUIAutomator(
+    //"new UiScrollable(new UiSelector().scrollable(true))" +
+    //".scrollIntoView(new UiSelector().text(\"Female\"))"));
+
+    //        // Click on the element
+    //        listItem.Click();
+ 
         }
 
         public void PersonalInfo_InValid()
@@ -85,7 +126,6 @@ namespace ResumeBuilder.Pages
             Nationality.SendKeys("%^&*");
             Email.SendKeys("nayabf52er355");
             Address.SendKeys("$%^&%G");
-            Male.Click();
             Female.Click();
         }
 
@@ -164,10 +204,22 @@ namespace ResumeBuilder.Pages
             okButton.Click();
         }
 
-        //Identifiers:
+        public void NavigateBack()
+        {
+            BackButton.Click();
+            Save.Click();
+        }
 
+        //Identifiers:. 
+        IWebElement AdClose => driver.FindElementByXPath("//android.view.View[@resource-id=\"mys-content\"]/android.view.View[2]/android.widget.TextView");
+        IWebElement CreateCV => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/createCv");
+        IWebElement Personal_Info => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[1]");
+        private IWebElement Save => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/save");
+        private IWebElement Discard => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/discard");
+
+        private IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
+        private IWebElement Image => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"Screenshot_20240109-151655_One UI Home.jpg\"]");
         private IWebElement Imaget => driver.FindElementByXPath("(//android.widget.ImageView[@resource-id=\"com.android.documentsui:id/icon_thumb\"])[3]");
-        private IWebElement Image => driver.FindElementByXPath("(//android.widget.ImageView[@resource-id=\"com.android.documentsui:id/icon_thumb\"])[3]");
         private IWebElement Name => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/enterName"));
         private IWebElement Designation => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/designation"));
         private IWebElement DOB => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/dob"));
@@ -176,7 +228,7 @@ namespace ResumeBuilder.Pages
         private IWebElement Email => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/email"));
         private IWebElement Address => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/address"));
         private IWebElement Male => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/male"));
-        private IWebElement Female => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/female"));
+        private IWebElement Female => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/female");
         private IWebElement Other => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/other"));
         private IWebElement AddImage => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
         private IWebElement ChooseImage => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/chooseImage"));
