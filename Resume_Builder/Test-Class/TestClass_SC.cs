@@ -25,8 +25,10 @@ namespace ResumeBuilder.Test_Class
             driver = testInitialize.GetDriver();
         }
 
+        //Object of Pages
         PersonalInfo P;
         Academics A;
+        Skills skills;
 
         [TestMethod]
         public void PersonalInfo()
@@ -53,5 +55,11 @@ namespace ResumeBuilder.Test_Class
             A.NavigateBack();
         }
 
+        [TestMethod]
+        public void AddSkills()
+        {
+            skills = new Skills(driver);
+            skills.AddSkills();
+        }
     }
 }

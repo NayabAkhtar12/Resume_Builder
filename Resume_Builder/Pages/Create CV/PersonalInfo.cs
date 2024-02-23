@@ -15,13 +15,10 @@ namespace ResumeBuilder.Pages
     {
         private AppiumDriver<IWebElement> driver;
 
-        //private PersonalInfoIds I;
 
 
         public PersonalInfo(AppiumDriver<IWebElement> driver)
         {
-            // Initialize I1 in the constructor
-            // I = new PersonalInfoIds(driver);
             this.driver = driver;
         }
 
