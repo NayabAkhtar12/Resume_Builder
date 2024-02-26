@@ -16,19 +16,39 @@ namespace ResumeBuilder.Pages.Create_CV
         {
             this.driver = driver;
         }
-        public void AddLanguages()
+        public void Language_ValidInput()
         {
             LanguagesMenu.Click();
             AddButton.Click();
-            AddSkill.SendKeys("Manual Testing");
+            AddLanguages.SendKeys("English");
             BackButton.Click();
-            Save.Click();
+           // Save.Click();
+
+        }
+
+        public void InvalidLanguages()
+        {
+            LanguagesMenu.Click();
+            AddButton.Click();
+            AddLanguages.SendKeys("#$%^");
+            BackButton.Click();
+           // Save.Click();
+
+        }
+
+        public void spacesinLanguages()
+        {
+            LanguagesMenu.Click();
+            AddButton.Click();
+            AddLanguages.SendKeys("            ");
+            BackButton.Click();
+         //   Save.Click();
 
         }
         //Identifiers
         IWebElement LanguagesMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Languages\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");
-        private IWebElement AddSkill => driver.FindElementByXPath("//android.widget.EditText[@text=\"Add Skills\"]");
+        private IWebElement AddLanguages => driver.FindElementByXPath("//android.widget.EditText[@text=\"Languages\"]");
 
         IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
 

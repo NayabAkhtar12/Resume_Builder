@@ -16,19 +16,37 @@ namespace ResumeBuilder.Pages.Create_CV
         {
             this.driver = driver;
         }
-        public void References()
+        public void ValidReferencs()
         {
             ReferMenu.Click();
             AddButton.Click();
-            AddSkill.SendKeys("Manual Testing");
+            AddReference.SendKeys("Manual Testing");
             BackButton.Click();
-            Save.Click();
+          //  Save.Click();
+
+        }
+        public void InvalidReferencs()
+        {
+            ReferMenu.Click();
+            AddButton.Click();
+            AddReference.SendKeys("$%^^");
+            BackButton.Click();
+          //  Save.Click();
+
+        }
+        public void Spaces()
+        {
+            ReferMenu.Click();
+            AddButton.Click();
+            AddReference.SendKeys("    ");
+            BackButton.Click();
+          //  Save.Click();
 
         }
         //Identifiers
         IWebElement ReferMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[8]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");
-        private IWebElement AddSkill => driver.FindElementByXPath("//android.widget.EditText[@text=\"Add Skills\"]");
+        private IWebElement AddReference => driver.FindElementByXPath("//android.widget.EditText[@text=\"References\"]");
 
         IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
 

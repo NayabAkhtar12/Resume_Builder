@@ -28,7 +28,12 @@ namespace ResumeBuilder.Test_Class
         //Object of Pages
         PersonalInfo P;
         Academics A;
+        Experience Experience;
         Skills skills;
+        Interests Int;
+        Achievements Ach;
+        References Ref;
+        Languages Lang;
 
         [TestMethod]
         public void PersonalInfo()
@@ -56,10 +61,67 @@ namespace ResumeBuilder.Test_Class
         }
 
         [TestMethod]
+        public void Experiences()
+        {
+            Experience = new Experience(driver);
+            Experience.ValidExperience();
+            Experience.InValidExperience();
+        }
+
+
+        [TestMethod]
         public void AddSkills()
         {
             skills = new Skills(driver);
             skills.AddSkills();
+            skills.AddInvalidSkills();
+            skills.AddSpacesSkills();
+        }
+
+        [TestMethod]
+        public void Interests()
+        {
+            Int = new Interests(driver);
+            Int.AddInterests();
+            Int.AddInvalidInterests();
+            Int.AddSpacesinInterests();
+        }
+
+        [TestMethod]
+        public void Acheivement()
+        {
+            Ach=new Achievements(driver);
+            Ach.AddValidAchievements();
+            Ach.AddInValidAchievements();
+            Ach.AddSpacesinAchievements();
+
+        }
+
+        [TestMethod]
+        public void Languages()
+        {
+            Lang = new Languages(driver);
+            Lang.Language_ValidInput();
+            Lang.InvalidLanguages();
+            Lang.spacesinLanguages();
+        }
+
+        [TestMethod]
+        public void References()
+        {
+            Ref = new References(driver);
+            Ref.ValidReferencs();
+            Ref.InvalidReferencs();
+            Ref.Spaces();
+        }
+
+        [TestMethod]
+        public void Project()
+        {
+         //   Proj = new Projects(driver);
+            Ref.ValidReferencs();
+            Ref.InvalidReferencs();
+            Ref.Spaces();
         }
     }
 }

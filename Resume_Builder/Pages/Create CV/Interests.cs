@@ -20,15 +20,34 @@ namespace ResumeBuilder.Pages.Create_CV
         {
             InterestMenu.Click();
             AddButton.Click();
-            AddSkill.SendKeys("Manual Testing");
+            AddInterest.SendKeys("Walking");
             BackButton.Click();
-            Save.Click();
+           // Save.Click();
+
+        }
+
+        public void AddInvalidInterests()
+        {
+            InterestMenu.Click();
+            AddButton.Click();
+            AddInterest.SendKeys("#$%^");
+            BackButton.Click();
+            // Save.Click();
+
+        }
+        public void AddSpacesinInterests()
+        {
+            InterestMenu.Click();
+            AddButton.Click();
+            AddInterest.SendKeys("          ");
+            BackButton.Click();
+            // Save.Click();
 
         }
         //Identifiers
         IWebElement InterestMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Interest/Hobbies\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");
-        private IWebElement AddSkill => driver.FindElementByXPath("//android.widget.EditText[@text=\"Add Skills\"]");
+        private IWebElement AddInterest => driver.FindElementByXPath("//android.widget.EditText[@text=\"Interest\"]");
 
         IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
 

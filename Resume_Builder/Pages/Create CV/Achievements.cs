@@ -16,11 +16,30 @@ namespace ResumeBuilder.Pages.Create_CV
         {
             this.driver = driver;
         }
-        public void AddAchievements()
+        public void AddValidAchievements()
         {
             AchievementMenu.Click();
             AddButton.Click();
-            AddSkill.SendKeys("Manual Testing");
+            AddAchvmnt.SendKeys("Certificationa");
+            BackButton.Click();
+            Save.Click();
+
+        }
+        public void AddInValidAchievements()
+        {
+            AchievementMenu.Click();
+            AddButton.Click();
+            AddAchvmnt.SendKeys("#$%^");
+            BackButton.Click();
+            Save.Click();
+
+        }
+
+        public void AddSpacesinAchievements()
+        {
+            AchievementMenu.Click();
+            AddButton.Click();
+            AddAchvmnt.SendKeys("#$%^");
             BackButton.Click();
             Save.Click();
 
@@ -28,7 +47,7 @@ namespace ResumeBuilder.Pages.Create_CV
         //Identifiers
         IWebElement AchievementMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Achievements\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");
-        private IWebElement AddSkill => driver.FindElementByXPath("//android.widget.EditText[@text=\"Add Skills\"]");
+        private IWebElement AddAchvmnt => driver.FindElementByXPath("//android.widget.EditText[@text=\"Achievements\"]");
 
         IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
 

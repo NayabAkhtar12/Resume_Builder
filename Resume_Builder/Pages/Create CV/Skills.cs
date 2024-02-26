@@ -26,6 +26,24 @@ namespace ResumeBuilder.Pages.Create_CV
             Save.Click();
 
         }
+        public void AddInvalidSkills()
+        {
+            SkillMenu.Click();
+            AddButton.Click();
+            AddSkill.SendKeys("%$^&%$");
+            BackButton.Click();
+            Save.Click();
+
+        }
+        public void AddSpacesSkills()
+        {
+            SkillMenu.Click();
+            AddButton.Click();
+            AddSkill.SendKeys("         ");
+            BackButton.Click();
+            Save.Click();
+
+        }
         //Identifiers
         IWebElement SkillMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[4]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");
