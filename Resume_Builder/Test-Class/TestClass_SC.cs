@@ -4,6 +4,7 @@ using OpenQA.Selenium.Appium;
 using ResumeBuilder.Core;
 using ResumeBuilder.Pages.Create_CV;
 using ResumeBuilder.Pages;
+using System.Drawing.Drawing2D;
 
 namespace ResumeBuilder.Test_Class
 {
@@ -34,6 +35,8 @@ namespace ResumeBuilder.Test_Class
         Achievements Ach;
         References Ref;
         Languages Lang;
+        Projects Projects;
+        SocialLinks SL;
 
         [TestMethod]
         public void PersonalInfo()
@@ -118,10 +121,17 @@ namespace ResumeBuilder.Test_Class
         [TestMethod]
         public void Project()
         {
-         //   Proj = new Projects(driver);
+         //  Proj = new Projects(driver);
             Ref.ValidReferencs();
             Ref.InvalidReferencs();
             Ref.Spaces();
         }
+        [TestMethod]
+        public void SocialMediaLinks()
+        {
+            SocialLinks SL = new SocialLinks(driver); // Assuming driver is initialized somewhere
+            SL.ValidSocialLinks();
+        }
     }
+  
 }
