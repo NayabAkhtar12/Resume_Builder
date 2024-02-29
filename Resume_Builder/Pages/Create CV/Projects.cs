@@ -18,8 +18,14 @@ namespace ResumeBuilder.Pages.Create_CV
 
         public void ValidProjects()
         {
-
+            ProjectMenu.Click();
+            ProjectName.SendKeys("Resume Builder");
+            StartDateField.Click();
+            StartDate.Click();
+            EndDateField.Click();
+            EndDate.Click();
         }
+        
         //Identifiers
         IWebElement ProjectMenu => driver.FindElementByAccessibilityId("");
         IWebElement ProjectName => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder");
