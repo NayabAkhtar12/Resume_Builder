@@ -26,25 +26,28 @@ namespace ResumeBuilder.Pages.Create_CV
 
         }
 
-        public void InvalidLanguages()
-        {
-            LanguagesMenu.Click();
-            AddButton.Click();
-            AddLanguages.SendKeys("#$%^");
-            BackButton.Click();
-           // Save.Click();
-
-        }
-
         public void spacesinLanguages()
         {
             LanguagesMenu.Click();
             AddButton.Click();
             AddLanguages.SendKeys("            ");
             BackButton.Click();
-         //   Save.Click();
+            //   Save.Click();
 
         }
+
+        public void InvalidLanguages()
+        {
+            LanguagesMenu.Click();
+            AddButton.Click();
+            AddLanguages.SendKeys("#$%^");
+            AddButton.Click();
+            BackButton.Click();
+           // Save.Click();
+
+        }
+
+       
         //Identifiers
         IWebElement LanguagesMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Languages\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");

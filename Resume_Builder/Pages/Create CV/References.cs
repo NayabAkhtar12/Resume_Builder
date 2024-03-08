@@ -19,8 +19,8 @@ namespace ResumeBuilder.Pages.Create_CV
         public void ValidReferencs()
         {
             ReferMenu.Click();
-            AddButton.Click();
             AddReference.SendKeys("Manual Testing");
+            AddButton.Click();
             BackButton.Click();
           //  Save.Click();
 

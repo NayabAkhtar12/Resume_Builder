@@ -32,7 +32,7 @@ namespace ResumeBuilder.Core
                 options.AddAdditionalCapability("unicodeKeyboard", false);
                 options.AddAdditionalCapability("resetKeyboard", false);
 
-                driver = new AndroidDriver<IWebElement>(new Uri("http://192.168.100.22:4723/"), options, TimeSpan.FromSeconds(180));
+                driver = new AndroidDriver<IWebElement>(new Uri("http://192.168.100.5:4723/"), options, TimeSpan.FromSeconds(180));
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
                
             }

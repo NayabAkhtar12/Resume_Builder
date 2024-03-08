@@ -1,14 +1,9 @@
-﻿using Castle.Components.DictionaryAdapter.Xml;
-using Newtonsoft.Json.Schema;
+﻿
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResumeBuilder.Pages.Create_CV
 {

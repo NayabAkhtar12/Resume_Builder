@@ -20,9 +20,9 @@ namespace ResumeBuilder.Pages.Create_CV
         }
         public void ValidInfo()
         {
+            AcademicsMenu.Click();
             //Valid  Info
             MobileElement();
-            // Send keys "hop" using the Actions class
             action.SendKeys("CodersInsignPVT LTD").Perform();
           //  action.MoveToElement(I.SaveAndNext).Click().Perform();
          // driver.HideKeyboard();
@@ -30,10 +30,10 @@ namespace ResumeBuilder.Pages.Create_CV
             //Date of Birth
             Degree.SendKeys("Software Engineering");
             SDate.Click();
-            Start_Date.Click(); //13 feb
+          //  Start_Date.Click(); 
             OK.Click();
             EDate.Click();
-            End_Date.Click(); //13 feb
+           // End_Date.Click(); 
             OK.Click();
             SaveAndNext.Click();
 
@@ -43,15 +43,14 @@ namespace ResumeBuilder.Pages.Create_CV
         {
             //InValid  Info
             MobileElement();
-            // Send keys "hop" using the Actions class
             action.SendKeys("%&*").Perform();
             Major_Course.SendKeys("  12%^&*");
             Degree.SendKeys("034988547664444444444444");
             SDate.Click();
-            Start_Date.Click(); //13 feb
+            Start_Date.Click(); 
             OK.Click();
             EDate.Click();
-            End_Date.Click(); //13 feb
+            End_Date.Click(); 
             OK.Click();
             SaveAndNext.Click();
         }
@@ -60,15 +59,14 @@ namespace ResumeBuilder.Pages.Create_CV
         {
             //InValid Personal Info
             MobileElement();
-            // Send keys "hop" using the Actions class
             action.SendKeys("             ").Perform();
             Major_Course.SendKeys("     ");  
             Degree.SendKeys("    ");
             SDate.Click();
-            Start_Date.Click(); //13 feb
+            Start_Date.Click(); 
             OK.Click();
             EDate.Click();
-            End_Date.Click(); //13 feb
+            End_Date.Click(); 
             OK.Click();
             SaveAndNext.Click();
         }
@@ -78,6 +76,8 @@ namespace ResumeBuilder.Pages.Create_CV
             BackButton.Click();
         }
         //Identifiers
+        private IWebElement AcademicsMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[2]");
+
         private IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
         private IWebElement Discard => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/discard");
 

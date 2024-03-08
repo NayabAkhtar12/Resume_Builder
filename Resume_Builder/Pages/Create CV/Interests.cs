@@ -19,8 +19,8 @@ namespace ResumeBuilder.Pages.Create_CV
         public void AddInterests()
         {
             InterestMenu.Click();
-            AddButton.Click();
             AddInterest.SendKeys("Walking");
+            AddButton.Click();
             BackButton.Click();
            // Save.Click();
 
@@ -47,7 +47,7 @@ namespace ResumeBuilder.Pages.Create_CV
         //Identifiers
         IWebElement InterestMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Interest/Hobbies\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");
-        private IWebElement AddInterest => driver.FindElementByXPath("//android.widget.EditText[@text=\"Interest\"]");
+        private IWebElement AddInterest => driver.FindElementByXPath("//android.widget.EditText[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/interests\"]");
 
         IWebElement BackButton => driver.FindElementByAccessibilityId("Navigate up");
 

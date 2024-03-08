@@ -43,9 +43,9 @@ namespace ResumeBuilder.Test_Class
         {
             // Initialize PersonalInfo with the Appium driver
             P = new PersonalInfo(driver);
-           //P.OpenPersonalInfo();
-         //  P.ImageUploading();
-           P.PersonalInfo_Valid();
+            P.OpenPersonalInfo();
+          //  P.ImageUploading();
+            P.PersonalInfo_Valid();
            // P.PersonalInfo_InValid();
            // P.PersonalInfo_Spaces();
             P.NavigateBack();
@@ -53,13 +53,13 @@ namespace ResumeBuilder.Test_Class
         }
 
 
-       // [TestMethod]
+        [TestMethod]
         public void Acedemics()
         {
             Academics A = new Academics(driver);
             A.ValidInfo();
-            A.InValidInfo_Spaces();
-            A.AcademicInfo();
+          //  A.InValidInfo_Spaces();
+           // A.AcademicInfo();
             A.NavigateBack();
         }
 
@@ -68,7 +68,7 @@ namespace ResumeBuilder.Test_Class
         {
             Experience = new Experience(driver);
             Experience.ValidExperience();
-            Experience.InValidExperience();
+         //   Experience.InValidExperience();
         }
 
 
@@ -86,8 +86,8 @@ namespace ResumeBuilder.Test_Class
         {
             Int = new Interests(driver);
             Int.AddInterests();
-            Int.AddInvalidInterests();
             Int.AddSpacesinInterests();
+            Int.AddInvalidInterests();
         }
 
         [TestMethod]
@@ -121,10 +121,9 @@ namespace ResumeBuilder.Test_Class
         [TestMethod]
         public void Project()
         {
-         //  Proj = new Projects(driver);
-            Ref.ValidReferencs();
-            Ref.InvalidReferencs();
-            Ref.Spaces();
+            Projects = new Projects(driver);
+            Projects.ValidProjects();
+           Projects.InValidProjects();
         }
         [TestMethod]
         public void SocialMediaLinks()

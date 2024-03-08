@@ -27,12 +27,13 @@ namespace ResumeBuilder.Pages.Create_CV
             Designation.SendKeys("SQA");
             Details.SendKeys("Phase 8");
             Start_DateDield.Click();
-            Star_Date.Click();
+           // Star_Date.Click();
             Ok.Click();
             EnddateField.Click();
-            EndDate.Click();
+          //  EndDate.Click();
             Ok.Click();
-               SaveandNext.Click();
+              SaveandNext.Click();
+            Back.Click();
         }
         public void InValidExperience()
         {

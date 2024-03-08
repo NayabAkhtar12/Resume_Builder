@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Android.UiAutomator;
@@ -7,6 +8,7 @@ using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace ResumeBuilder.Pages
 {
@@ -25,7 +27,7 @@ namespace ResumeBuilder.Pages
         public void OpenPersonalInfo()
         {
             CreateCV.Click();
-            AdClose.Click();
+          //  AdClose.Click();
             Personal_Info.Click();
         }
         public void ImageUploading()
@@ -91,40 +93,78 @@ namespace ResumeBuilder.Pages
             PhoneNo.SendKeys("03498854766");
             Nationality.SendKeys("Pakistani");
             Email.SendKeys("nayabf52@gmail.com");
-            Address.SendKeys("Bahria Phase 8");
-            IWebElement listItem = driver.FindElement(MobileBy.AndroidUIAutomator(
+
+            IWebElement AddressItem = driver.FindElement(MobileBy.AndroidUIAutomator(
     "new UiScrollable(new UiSelector().scrollable(true))" +
-    ".scrollIntoView(new UiSelector().text(\"Female\"))"));
-
-            // Click on the element
-            listItem.Click();
-
-
-    //        AndroidElement listItem = (AndroidElement)driver.FindElement(MobileBy.AndroidUIAutomator(
-    //"new UiScrollable(new UiSelector().scrollable(true))" +
-    //".scrollIntoView(new UiSelector().text(\"Female\"))"));
-
-    //        // Click on the element
-    //        listItem.Click();
- 
-        }
-
-        public void PersonalInfo_InValid()
-        {
-            //InValid Personal Info
-            // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-            Name.SendKeys("%&*");
-            Designation.SendKeys("  12%^&*");
-            //Date of Birth
-            DOB.Click();
-            // I.Day.Click(); //13 feb
-            okButton.Click();
-            PhoneNo.SendKeys("034988547664444444444444");
-            Nationality.SendKeys("%^&*");
-            Email.SendKeys("nayabf52er355");
-            Address.SendKeys("$%^&%G");
+    ".scrollIntoView(new UiSelector().text(\"Address*\"))"));
+            Address.SendKeys("Bahria Phase 8");
+           // Address.Clear();
+          // driver.HideKeyboard();
             Female.Click();
+            // AddressItem.Click();
+            //  AddressItem.SendKeys("RWp");
+
+
+
+            //        AndroidElement listItem = (AndroidElement)driver.FindElement(MobileBy.AndroidUIAutomator(
+            //"new UiScrollable(new UiSelector().scrollable(true))" +
+            //".scrollIntoView(new UiSelector().text(\"Female\"))"));
+
+            //        // Click on the element
+            //        listItem.Click();
+
         }
+
+public void PersonalInfo_InValid()
+    {
+        Name.SendKeys("%&*");
+        Assert.IsTrue(Name.GetAttribute("value").Equals("Nayab Akhtar"), "Name field should contain 'Nayab Akhtar'");
+
+        Designation.SendKeys("  12%^&*");
+        Assert.IsTrue(Designation.GetAttribute("value").Equals("SQA"), "Designation field should contain 'SQA'");
+
+        //Date of Birth
+        DOB.Click();
+        // I.Day.Click(); //13 feb
+        okButton.Click();
+
+        PhoneNo.SendKeys("034988547664444444444444");
+        Assert.IsTrue(PhoneNo.GetAttribute("value").Equals("03497765433"), "Phone number field should contain '03497765433'");
+
+        Nationality.SendKeys("%^&*");
+        Assert.IsTrue(Nationality.GetAttribute("value").Equals("Pakistani"), "Nationality field should contain 'Pakistani'");
+
+        Email.SendKeys("nayabf52er355");
+        Assert.IsTrue(Email.GetAttribute("value").Equals("nayab@gmail.com"), "Email field should contain 'nayab@gmail.com'");
+
+        Address.SendKeys("$%^&%G");
+        Assert.IsTrue(Address.GetAttribute("value").Equals("Rawalpindi"), "Address field should contain 'Rawalpindi'");
+
+        Female.Click();
+        Assert.IsTrue(Female.Selected, "Female option should be selected");
+    }
+
+
+
+
+
+
+    //public void PersonalInfo_InValid()
+    //    {
+    //        //InValid Personal Info
+    //        // Assert.IsNotNull(I, "Identifiers instance is not initialized");
+    //        Name.SendKeys("%&*");
+    //        Designation.SendKeys("  12%^&*");
+    //        //Date of Birth
+    //        DOB.Click();
+    //        // I.Day.Click(); //13 feb
+    //        okButton.Click();
+    //        PhoneNo.SendKeys("034988547664444444444444");
+    //        Nationality.SendKeys("%^&*");
+    //        Email.SendKeys("nayabf52er355");
+    //        Address.SendKeys("$%^&%G");
+    //        Female.Click();
+    //    }
 
         public void PersonalInfo_Spaces()
         {
