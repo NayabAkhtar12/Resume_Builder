@@ -6,21 +6,24 @@ using OpenQA.Selenium.Appium;
 using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using YourNamespace;
 namespace ResumeBuilder.Core
 {
-    public class TestInitialize
+    public class TestInitialize 
     {
-        private AppiumDriver<IWebElement> driver;
+        public AppiumDriver<IWebElement> driver;
+        //public AppiumDriver<IWebElement> GetDriver()
+        //{
+        //    return driver;
+        //}
 
-        //Method for accessing the driver outside the class
-        public AppiumDriver<IWebElement> GetDriver()
-        {
-            return driver;
-        }
+
         [TestInitialize]
         public void Setup()
         {
+
             try
             {
                 AppiumOptions options = new AppiumOptions();
@@ -60,6 +63,7 @@ namespace ResumeBuilder.Core
                     Console.WriteLine($"Failed to cleanup driver: {ex.Message}");
                 }
             }
+
         }
     }
 }

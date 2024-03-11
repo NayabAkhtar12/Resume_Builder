@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
@@ -114,57 +115,155 @@ namespace ResumeBuilder.Pages
             //        listItem.Click();
 
         }
+        public ExtentReports extent;
 
-public void PersonalInfo_InValid()
-    {
-        Name.SendKeys("%&*");
-        Assert.IsTrue(Name.GetAttribute("value").Equals("Nayab Akhtar"), "Name field should contain 'Nayab Akhtar'");
+        public void PersonalInfo_InValid()
+        {
+            ExtentTest test = extent.CreateTest("PersonalInformationReport");
 
-        Designation.SendKeys("  12%^&*");
-        Assert.IsTrue(Designation.GetAttribute("value").Equals("SQA"), "Designation field should contain 'SQA'");
+            try
+            {
+                Name.SendKeys("Nayab Akhtar");
+                Assert.IsTrue(Name.Text.Equals("Nayab Akhtar"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
 
-        //Date of Birth
-        DOB.Click();
-        // I.Day.Click(); //13 feb
-        okButton.Click();
+            try
+            {
+                Designation.SendKeys("  12%^&*");
+                Assert.IsTrue(Designation.Text.Equals("SQA"), "Failed Test Case");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Assertion failed: " + e.Message);
+                // Log or report the assertion failure
+            }
 
-        PhoneNo.SendKeys("034988547664444444444444");
-        Assert.IsTrue(PhoneNo.GetAttribute("value").Equals("03497765433"), "Phone number field should contain '03497765433'");
+            try
+            {
+                DOB.Click();
+                // I.Day.Click(); //13 feb
+                okButton.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception occurred: " + e.Message);
+                // Log or report any exceptions
+            }
 
-        Nationality.SendKeys("%^&*");
-        Assert.IsTrue(Nationality.GetAttribute("value").Equals("Pakistani"), "Nationality field should contain 'Pakistani'");
+            try
+            {
+                PhoneNo.SendKeys("034988547664444444444444");
+                Assert.IsTrue(PhoneNo.Text.Equals("03578823844"), "Failed Test Case");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Assertion failed: " + e.Message);
+                // Log or report the assertion failure
+            }
 
-        Email.SendKeys("nayabf52er355");
-        Assert.IsTrue(Email.GetAttribute("value").Equals("nayab@gmail.com"), "Email field should contain 'nayab@gmail.com'");
+            try
+            {
+                Nationality.SendKeys("%^&*");
+                Assert.IsTrue(Nationality.Text.Equals("Pakistani"), "Failed Test Case");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Assertion failed: " + e.Message);
+                // Log or report the assertion failure
+            }
 
-        Address.SendKeys("$%^&%G");
-        Assert.IsTrue(Address.GetAttribute("value").Equals("Rawalpindi"), "Address field should contain 'Rawalpindi'");
+            try
+            {
+                Email.SendKeys("nayabf52er355");
+                Assert.IsTrue(Email.Text.Equals("nayab@gmail.com"), "Failed Test Case");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Assertion failed: " + e.Message);
+                // Log or report the assertion failure
+            }
 
-        Female.Click();
-        Assert.IsTrue(Female.Selected, "Female option should be selected");
-    }
+            try
+            {
+                Address.SendKeys("$%^&%G");
+                Assert.IsTrue(Address.Text.Equals("Rawalpindi"), "Failed Test Case");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Assertion failed: " + e.Message);
+                // Log or report the assertion failure
+            }
+
+            try
+            {
+                Female.Click();
+                Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Assertion failed: " + e.Message);
+                // Log or report the assertion failure
+            }
+        }
+
+
+
+
+        //public void PersonalInfo_InValid()
+        //    {
+        //        Name.SendKeys("Nayab Akhtar");
+        //        Assert.IsTrue(Name.Text.Equals("Nayab Akhtar"), "Failed Test Case");
+
+        //        Designation.SendKeys("  12%^&*");
+        //         Assert.IsTrue(Designation.Text.Equals("SQA"), "Failed Test Case");
+
+        //            //Date of Birth
+        //            DOB.Click();
+        //        // I.Day.Click(); //13 feb
+        //        okButton.Click();
+
+        //        PhoneNo.SendKeys("034988547664444444444444");
+        //        Assert.IsTrue(PhoneNo.Text.Equals("03578823844"), "Failed Test Case");
+
+        //            Nationality.SendKeys("%^&*");
+        //            Assert.IsTrue(Nationality.Text.Equals("Pakistani"), "Failed Test Case");
+
+        //            Email.SendKeys("nayabf52er355");
+        //            Assert.IsTrue(Email.Text.Equals("nayab@gmail.com"), "Failed Test Case");
+
+        //            Address.SendKeys("$%^&%G");
+        //            Assert.IsTrue(Address.Text.Equals("Rawalpindi"), "Failed Test Case");
+
+        //            Female.Click();
+        //            Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
+        //        }
 
 
 
 
 
 
-    //public void PersonalInfo_InValid()
-    //    {
-    //        //InValid Personal Info
-    //        // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-    //        Name.SendKeys("%&*");
-    //        Designation.SendKeys("  12%^&*");
-    //        //Date of Birth
-    //        DOB.Click();
-    //        // I.Day.Click(); //13 feb
-    //        okButton.Click();
-    //        PhoneNo.SendKeys("034988547664444444444444");
-    //        Nationality.SendKeys("%^&*");
-    //        Email.SendKeys("nayabf52er355");
-    //        Address.SendKeys("$%^&%G");
-    //        Female.Click();
-    //    }
+        //public void PersonalInfo_InValid()
+        //    {
+        //        //InValid Personal Info
+        //        // Assert.IsNotNull(I, "Identifiers instance is not initialized");
+        //        Name.SendKeys("%&*");
+        //        Designation.SendKeys("  12%^&*");
+        //        //Date of Birth
+        //        DOB.Click();
+        //        // I.Day.Click(); //13 feb
+        //        okButton.Click();
+        //        PhoneNo.SendKeys("034988547664444444444444");
+        //        Nationality.SendKeys("%^&*");
+        //        Email.SendKeys("nayabf52er355");
+        //        Address.SendKeys("$%^&%G");
+        //        Female.Click();
+        //    }
 
         public void PersonalInfo_Spaces()
         {

@@ -95,7 +95,7 @@ namespace ResumeBuilder.Pages.Create_CV
         private IWebElement EDate => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/endDate"));
        private IWebElement Mobile => driver.FindElement(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
 
-
+        [Obsolete]
         private void MobileElement()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
