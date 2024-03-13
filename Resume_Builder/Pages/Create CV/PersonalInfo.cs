@@ -2,14 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.Android.UiAutomator;
-using OpenQA.Selenium.Appium.Interfaces;
 using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Net;
 
 namespace ResumeBuilder.Pages
 {
@@ -17,32 +13,340 @@ namespace ResumeBuilder.Pages
     class PersonalInfo 
     {
         private AppiumDriver<IWebElement> driver;
+        private ExtentTest Test;
 
-
-
-        public PersonalInfo(AppiumDriver<IWebElement> driver)
+        public PersonalInfo(AppiumDriver<IWebElement> driver, ExtentTest Test )
         {
             this.driver = driver;
+            this.Test = Test;
         }
 
         public void OpenPersonalInfo()
         {
-            CreateCV.Click();
-          //  AdClose.Click();
-            Personal_Info.Click();
+            try
+            {
+                CreateCV.Click();
+                //  AdClose.Click();
+                Personal_Info.Click();
+            }
+            catch (Exception e)
+            {
+                Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+            }
+       
         }
         public void ImageUploading()
         {
-            AddImage.Click();
-            FromGallery.Click();
+            try
+            {
+                AddImage.Click();
+                FromGallery.Click();
 
-            // Scroll to the desired image
-           ScrollToImage();
+                // Scroll to the desired image
+                ScrollToImage();
 
-            // Click on the image
-            Image.Click();
+                // Click on the image
+                Image.Click();
+            }
+            catch ( Exception e)
+             {
+                Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+
+            }
+
         }
 
+        public void PersonalInfo_InValid()
+        {
+            try
+            {
+                try
+                {
+                    Name.SendKeys("Nayab Akhtar");
+                    Assert.IsTrue(Name.Text.Equals("Nayab Akhtar"), "Failed Test Case");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Assertion failed: " + ex.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+                }
+
+                try
+                {
+                    Designation.SendKeys("  12%^&*");
+                    Assert.IsTrue(Designation.Text.Equals("SQA"), "Failed Test Case");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Assertion failed: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+
+                try
+                {
+                    DOB.Click();
+                   // I.Day.Click(); 
+                    okButton.Click();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception occurred: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+
+                try
+                {
+                    PhoneNo.SendKeys("034988547664444444444444");
+                    Assert.IsTrue(PhoneNo.Text.Equals("03578823844"), "Failed Test Case");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Assertion failed: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+
+                try
+                {
+                    Nationality.SendKeys("%^&*");
+                    Assert.IsTrue(Nationality.Text.Equals("Pakistani"), "Failed Test Case");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Assertion failed: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+
+                try
+                {
+                    Email.SendKeys("nayabf52er355");
+                    Assert.IsTrue(Email.Text.Equals("nayab@gmail.com"), "Failed Test Case");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Assertion failed: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+                try
+                {
+                    Address.SendKeys("$%^&%G");
+                    Assert.IsTrue(Address.Text.Equals("Rawalpindi"), "Failed Test Case");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Assertion failed: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+
+                try
+                {
+                    Female.Click();
+                    Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Assertion failed: " + e.Message);
+                    Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+        }
+
+        public void PersonalInfo_Valid()
+        {
+            try
+            {
+                //Valid Personal Info
+                Name.SendKeys("NayabAkhtar");
+                Assert.IsTrue(Name.Text.Equals("NayabAkhtar"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Name Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Designation.SendKeys("SQA");
+                Assert.IsTrue(Designation.Text.Equals("SQA"), " Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Designation Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                //Date of Birth
+                DOB.Click();
+                //I.Day.Click();
+                okButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Date Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                PhoneNo.SendKeys("03498854766");
+                Assert.IsTrue(PhoneNo.Text.Equals("03498854766"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $" Phone Number Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Nationality.SendKeys("Pakistani");
+                Assert.IsTrue(Nationality.Text.Equals("Pakistani"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Nationality Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Email.SendKeys("nayabf52@gmail.com");
+                Assert.IsTrue(Email.Text.Equals("nayabf52@gmail.com"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Email Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                IWebElement AddressItem = driver.FindElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                ".scrollIntoView(new UiSelector().text(\"Address*\"))"));
+                Address.SendKeys("Bahria Phase 8");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Address Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Female.Click();
+                Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Female Test failed due to: {ex.Message}");
+            }
+
+
+        }
+
+        public void PersonalInfo_Spaces()
+        {
+            //InValid Personal Info
+            try
+            {
+                Name.SendKeys("   ");
+                Assert.IsTrue(Name.Text.Equals("   "), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Designation.SendKeys("     ");
+                Assert.IsTrue(Designation.Text.Equals("     "), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                //Date of Birth
+                DOB.Click();
+                // I.Day.Click(); //13 feb
+                okButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                PhoneNo.SendKeys("    ");
+                Assert.IsTrue(PhoneNo.Text.Equals("    "), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Nationality.SendKeys("    ");
+                Assert.IsTrue(Nationality.Text.Equals("    "), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Email.SendKeys("   ");
+                Assert.IsTrue(Email.Text.Equals("   "), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Address.SendKeys("   ");
+                Assert.IsTrue(Address.Text.Equals("   "), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Female.Click();
+                Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Assertion failed: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+        }
         private void ScrollToImage()
         {
             // Scroll until the image becomes visible
@@ -79,208 +383,6 @@ namespace ResumeBuilder.Pages
                 .MoveTo(x: startX, y: endY)
                 .Release()
                 .Perform();
-        }
-
-
-        public void PersonalInfo_Valid()
-        {
-            //Valid Personal Info
-            Name.SendKeys("NayabAkhtar");
-            Designation.SendKeys("SQA");
-            //Date of Birth
-            DOB.Click();
-            //I.Day.Click(); //13 feb
-            okButton.Click();
-            PhoneNo.SendKeys("03498854766");
-            Nationality.SendKeys("Pakistani");
-            Email.SendKeys("nayabf52@gmail.com");
-
-            IWebElement AddressItem = driver.FindElement(MobileBy.AndroidUIAutomator(
-    "new UiScrollable(new UiSelector().scrollable(true))" +
-    ".scrollIntoView(new UiSelector().text(\"Address*\"))"));
-            Address.SendKeys("Bahria Phase 8");
-           // Address.Clear();
-          // driver.HideKeyboard();
-            Female.Click();
-            // AddressItem.Click();
-            //  AddressItem.SendKeys("RWp");
-
-
-
-            //        AndroidElement listItem = (AndroidElement)driver.FindElement(MobileBy.AndroidUIAutomator(
-            //"new UiScrollable(new UiSelector().scrollable(true))" +
-            //".scrollIntoView(new UiSelector().text(\"Female\"))"));
-
-            //        // Click on the element
-            //        listItem.Click();
-
-        }
-        public ExtentReports extent;
-
-        public void PersonalInfo_InValid()
-        {
-            ExtentTest test = extent.CreateTest("PersonalInformationReport");
-
-            try
-            {
-                Name.SendKeys("Nayab Akhtar");
-                Assert.IsTrue(Name.Text.Equals("Nayab Akhtar"), "Failed Test Case");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Assertion failed: " + ex.Message);
-                test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
-            }
-
-            try
-            {
-                Designation.SendKeys("  12%^&*");
-                Assert.IsTrue(Designation.Text.Equals("SQA"), "Failed Test Case");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Assertion failed: " + e.Message);
-                // Log or report the assertion failure
-            }
-
-            try
-            {
-                DOB.Click();
-                // I.Day.Click(); //13 feb
-                okButton.Click();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception occurred: " + e.Message);
-                // Log or report any exceptions
-            }
-
-            try
-            {
-                PhoneNo.SendKeys("034988547664444444444444");
-                Assert.IsTrue(PhoneNo.Text.Equals("03578823844"), "Failed Test Case");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Assertion failed: " + e.Message);
-                // Log or report the assertion failure
-            }
-
-            try
-            {
-                Nationality.SendKeys("%^&*");
-                Assert.IsTrue(Nationality.Text.Equals("Pakistani"), "Failed Test Case");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Assertion failed: " + e.Message);
-                // Log or report the assertion failure
-            }
-
-            try
-            {
-                Email.SendKeys("nayabf52er355");
-                Assert.IsTrue(Email.Text.Equals("nayab@gmail.com"), "Failed Test Case");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Assertion failed: " + e.Message);
-                // Log or report the assertion failure
-            }
-
-            try
-            {
-                Address.SendKeys("$%^&%G");
-                Assert.IsTrue(Address.Text.Equals("Rawalpindi"), "Failed Test Case");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Assertion failed: " + e.Message);
-                // Log or report the assertion failure
-            }
-
-            try
-            {
-                Female.Click();
-                Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Assertion failed: " + e.Message);
-                // Log or report the assertion failure
-            }
-        }
-
-
-
-
-        //public void PersonalInfo_InValid()
-        //    {
-        //        Name.SendKeys("Nayab Akhtar");
-        //        Assert.IsTrue(Name.Text.Equals("Nayab Akhtar"), "Failed Test Case");
-
-        //        Designation.SendKeys("  12%^&*");
-        //         Assert.IsTrue(Designation.Text.Equals("SQA"), "Failed Test Case");
-
-        //            //Date of Birth
-        //            DOB.Click();
-        //        // I.Day.Click(); //13 feb
-        //        okButton.Click();
-
-        //        PhoneNo.SendKeys("034988547664444444444444");
-        //        Assert.IsTrue(PhoneNo.Text.Equals("03578823844"), "Failed Test Case");
-
-        //            Nationality.SendKeys("%^&*");
-        //            Assert.IsTrue(Nationality.Text.Equals("Pakistani"), "Failed Test Case");
-
-        //            Email.SendKeys("nayabf52er355");
-        //            Assert.IsTrue(Email.Text.Equals("nayab@gmail.com"), "Failed Test Case");
-
-        //            Address.SendKeys("$%^&%G");
-        //            Assert.IsTrue(Address.Text.Equals("Rawalpindi"), "Failed Test Case");
-
-        //            Female.Click();
-        //            Assert.IsTrue(Female.Text.Equals("Female"), "Failed Test Case");
-        //        }
-
-
-
-
-
-
-        //public void PersonalInfo_InValid()
-        //    {
-        //        //InValid Personal Info
-        //        // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-        //        Name.SendKeys("%&*");
-        //        Designation.SendKeys("  12%^&*");
-        //        //Date of Birth
-        //        DOB.Click();
-        //        // I.Day.Click(); //13 feb
-        //        okButton.Click();
-        //        PhoneNo.SendKeys("034988547664444444444444");
-        //        Nationality.SendKeys("%^&*");
-        //        Email.SendKeys("nayabf52er355");
-        //        Address.SendKeys("$%^&%G");
-        //        Female.Click();
-        //    }
-
-        public void PersonalInfo_Spaces()
-        {
-            //InValid Personal Info
-            // Assert.IsNotNull(I, "Identifiers instance is not initialized");
-            Name.SendKeys("   ");
-            Designation.SendKeys("     ");
-            //Date of Birth
-            DOB.Click();
-            // I.Day.Click(); //13 feb
-            okButton.Click();
-            PhoneNo.SendKeys("    ");
-            Nationality.SendKeys("    ");
-            Email.SendKeys("   ");
-            Address.SendKeys("   ");
-            Male.Click();
-            Female.Click();
         }
 
         public void SelectDateofBirth(string exdate)
@@ -342,8 +444,16 @@ namespace ResumeBuilder.Pages
 
         public void NavigateBack()
         {
-            BackButton.Click();
-            Save.Click();
+            try
+            {
+                BackButton.Click();
+                Save.Click();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Exception Occured due to {e} ");
+            }
+          
         }
 
         //Identifiers:. 

@@ -1,12 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
@@ -14,60 +11,195 @@ namespace ResumeBuilder.Pages.Create_CV
     {
         private AppiumDriver<IWebElement> driver;
         Actions action;
-        public Projects(AppiumDriver<IWebElement> driver)
+        private ExtentTest Test;
+
+        public Projects(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
             this.driver = driver;
+            this.Test = Test;
             action = new Actions(driver);
+
         }
 
         public void ValidProjects()
         {
-            ProjectMenu.Click();
-            ProjectNameRB();
-            action.SendKeys("Resume Builder").Perform();
-           // ProjectName.SendKeys("Resume Builder");
-            Details.SendKeys("fdd");
-            StartDateField.Click();
-            Ok.Click();
-          //  StartDate.Click();
-            EndDateField.Click();
-            Ok.Click();
-          //  EndDate.Click();
-          SaveNext.Click();
-            Back.Click();
-          
+            try
+            {
+                ProjectMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on ProjectMenu: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on ProjectMenu. Details: {ex.Message}");
+            }
+
+            try
+            {
+                ProjectNameRB();
+                action.SendKeys("Resume Builder").Perform();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to ProjectNameRB: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to ProjectNameRB. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Details.SendKeys("fdd");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Details: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Details. Details: {ex.Message}");
+            }
+
+            try
+            {
+                StartDateField.Click();
+                Ok.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on StartDateField or Ok: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on StartDateField or Ok. Details: {ex.Message}");
+            }
+
+            try
+            {
+                EndDateField.Click();
+                Ok.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on EndDateField or Ok: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on EndDateField or Ok. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SaveNext.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on SaveNext: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on SaveNext. Details: {ex.Message}");
+            }
         }
+
         public void InValidProjects()
         {
-            ProjectMenu.Click();
-            ProjectNameRB();
-            action.SendKeys("Resume Builder").Perform();
-            driver.HideKeyboard();
 
-            Details.SendKeys("#$%");
-            StartDateField.Click();
-            Ok.Click();
-            //  StartDate.Click();
-            EndDateField.Click();
-            Ok.Click();
-            //  EndDate.Click();
-            SaveNext.Click();
-            Back.Click();
+            try
+            {
+                ProjectNameRB();
+                action.SendKeys("Resume Builder").Perform();
+                driver.HideKeyboard();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to ProjectNameRB: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to ProjectNameRB. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Details.SendKeys("#$%");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Details: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Details. Details: {ex.Message}");
+            }
+
+            try
+            {
+                StartDateField.Click();
+                Ok.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on StartDateField or Ok: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on StartDateField or Ok. Details: {ex.Message}");
+            }
+
+            try
+            {
+                EndDateField.Click();
+                Ok.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on EndDateField or Ok: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on EndDateField or Ok. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SaveNext.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on SaveNext: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on SaveNext. Details: {ex.Message}");
+            }
         }
+
         public void Spaces()
         {
-            ProjectMenu.Click();
-            ProjectName.SendKeys("        ");
-            Details.SendKeys("    ");
-            StartDateField.Click();
-            Ok.Click();
-            //  StartDate.Click();
-            EndDateField.Click();
-            Ok.Click();
-            //  EndDate.Click();
-            SaveNext.Click();
-            Back.Click();
+            try
+            {
+                Details.SendKeys("    ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Details: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Details. Details: {ex.Message}");
+            }
+
+            try
+            {
+                StartDateField.Click();
+                Ok.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on StartDateField or Ok: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on StartDateField or Ok. Details: {ex.Message}");
+            }
+
+            try
+            {
+                EndDateField.Click();
+                Ok.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on EndDateField or Ok: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on EndDateField or Ok. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SaveNext.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on SaveNext: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on SaveNext. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Back.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on Back: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on Back. Details: {ex.Message}");
+            }
         }
+
         //Identifiers
         IWebElement ProjectMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[9]");
         IWebElement ProjectName => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder");

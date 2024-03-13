@@ -25,6 +25,9 @@ D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Resume_Builder.cs
 D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Resume_Builder.csproj.CopyComplete
 D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Scientific Calculator.dll
 D:\Automation-Projects\Resume Builder\Resume_Builder\obj\Debug\Scientific Calculator.pdb
+D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Newtonsoft.Json.xml
+D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\de\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -88,7 +91,6 @@ D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Microsoft.VisualS
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\MongoDB.Bson.xml
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\MongoDB.Driver.xml
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\MongoDB.Driver.Core.xml
-D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\Newtonsoft.Json.xml
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\RazorEngine.xml
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\System.Buffers.xml
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\System.Collections.Immutable.xml
@@ -118,8 +120,6 @@ D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\ru\Microsoft.Code
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\tr\Microsoft.CodeAnalysis.resources.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.resources.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\de\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\es\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\Automation-Projects\Resume_Builder\Resume_Builder\bin\Debug\it\Microsoft.CodeAnalysis.CSharp.resources.dll

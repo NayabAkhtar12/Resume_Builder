@@ -1,11 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using System;
-using System.Collections.Generic;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
@@ -13,37 +9,118 @@ namespace ResumeBuilder.Pages.Create_CV
     {
         private AppiumDriver<IWebElement> driver;
 
-       public Skills(AppiumDriver<IWebElement> driver) 
-        { 
-        this.driver= driver;
-        }
-        public void AddSkills()
+        private ExtentTest Test;
+
+        public Skills(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
-            SkillMenu.Click();
-            AddButton.Click();
-            AddSkill.SendKeys("Manual Testing");
-            BackButton.Click();
-            Save.Click();
+            this.driver = driver;
+            this.Test = Test;
+        }
+
+        public void AddValidSkills()
+        {
+            try
+            {
+                SkillMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on SkillMenu: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on SkillMenu. Details: {ex.Message}");
+            }
+
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                AddSkill.SendKeys("Manual Testing");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddSkill: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddSkill. Details: {ex.Message}");
+            }
 
         }
+
         public void AddInvalidSkills()
         {
-            SkillMenu.Click();
-            AddButton.Click();
-            AddSkill.SendKeys("%$^&%$");
-            BackButton.Click();
-            Save.Click();
+
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                AddSkill.SendKeys("%$^&%$");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddSkill: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddSkill. Details: {ex.Message}");
+            }
+
+            try
+            {
+                BackButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on BackButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on BackButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Save.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on Save: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on Save. Details: {ex.Message}");
+            }
 
         }
-        public void AddSpacesSkills()
+
+        public void AddSpacesinSkills()
         {
-            SkillMenu.Click();
-            AddButton.Click();
-            AddSkill.SendKeys("         ");
-            BackButton.Click();
-            Save.Click();
+
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                AddSkill.SendKeys("         ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddSkill: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddSkill. Details: {ex.Message}");
+            }
 
         }
+
         //Identifiers
         IWebElement SkillMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[4]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");

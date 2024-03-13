@@ -1,10 +1,7 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
@@ -12,38 +9,93 @@ namespace ResumeBuilder.Pages.Create_CV
     {
         private AppiumDriver<IWebElement> driver;
 
-        public Interests(AppiumDriver<IWebElement> driver)
+        private ExtentTest Test;
+
+        public Interests(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
             this.driver = driver;
+            this.Test = Test;
         }
-        public void AddInterests()
-        {
-            InterestMenu.Click();
-            AddInterest.SendKeys("Walking");
-            AddButton.Click();
-            BackButton.Click();
-           // Save.Click();
 
+        public void AddValidInterests()
+        {
+            try
+            {
+                InterestMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on InterestMenu: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on InterestMenu. Details: {ex.Message}");
+            }
+            try
+            {
+                AddInterest.SendKeys("Walking");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddInterest: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddInterest. Details: {ex.Message}");
+            }
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
         }
 
         public void AddInvalidInterests()
         {
-            InterestMenu.Click();
-            AddButton.Click();
-            AddInterest.SendKeys("#$%^");
-            BackButton.Click();
-            // Save.Click();
+
+            try
+            {
+                AddInterest.SendKeys("#$%^");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddInterest: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddInterest. Details: {ex.Message}");
+            }
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
 
         }
+
         public void AddSpacesinInterests()
         {
-            InterestMenu.Click();
-            AddButton.Click();
-            AddInterest.SendKeys("          ");
-            BackButton.Click();
-            // Save.Click();
-
+            try
+            {
+                AddInterest.SendKeys("          ");
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddInterest: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddInterest. Details: {ex.Message}");
+            }
+            try
+            {
+                BackButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on BackButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on BackButton. Details: {ex.Message}");
+            }
         }
+
+      
         //Identifiers
         IWebElement InterestMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Interest/Hobbies\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");

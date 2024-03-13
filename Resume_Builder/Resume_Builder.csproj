@@ -177,14 +177,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\ExtentDemo.cs" />
-    <Compile Include="Core\TestInitialize1.cs" />
     <Compile Include="Pages\Create CV\Academics.cs" />
     <Compile Include="Pages\Create CV\Achievements.cs" />
     <Compile Include="Pages\Create CV\Experience.cs" />
     <Compile Include="Pages\Create CV\Interests.cs" />
     <Compile Include="Pages\Create CV\Languages.cs" />
-    <Compile Include="Pages\Create CV\ExTest.cs" />
     <Compile Include="Pages\Create CV\Projects.cs" />
     <Compile Include="Pages\Create CV\References.cs" />
     <Compile Include="Pages\Create CV\Skills.cs" />
@@ -193,7 +190,6 @@
     <Compile Include="Pages\Identifiers\PersonalInfoIds.cs" />
     <Compile Include="Pages\Create CV\PersonalInfo.cs" />
     <Compile Include="Test-Class\TestClass.cs" />
-    <Compile Include="Test-Class\TestClass_SC.cs" />
     <Compile Include="Core\TestInitialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,10 +1,7 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
@@ -12,36 +9,145 @@ namespace ResumeBuilder.Pages.Create_CV
     {
         private AppiumDriver<IWebElement> driver;
 
-        public Achievements(AppiumDriver<IWebElement> driver)
+        private ExtentTest Test;
+
+        public Achievements(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
             this.driver = driver;
+            this.Test = Test;
         }
+    
         public void AddValidAchievements()
         {
-            AchievementMenu.Click();
-            AddButton.Click();
-            AddAchvmnt.SendKeys("Certificationa");
-            BackButton.Click();
-            Save.Click();
+            try
+            {
+                AchievementMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AchievementMenu: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AchievementMenu. Details: {ex.Message}");
+            }
 
+          
+
+            try
+            {
+                AddAchvmnt.Click();
+                AddAchvmnt.SendKeys("Certificationa");
+                driver.HideKeyboard();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddAchvmnt: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddAchvmnt. Details: {ex.Message}");
+            }
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
         }
+
+
         public void AddInValidAchievements()
         {
-            AchievementMenu.Click();
-            AddButton.Click();
-            AddAchvmnt.SendKeys("#$%^");
-            BackButton.Click();
-            Save.Click();
+            try
+            {
+                AchievementMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AchievementMenu: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AchievementMenu. Details: {ex.Message}");
+            }
 
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                AddAchvmnt.SendKeys("#$%^");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddAchvmnt: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddAchvmnt. Details: {ex.Message}");
+            }
+
+            try
+            {
+                BackButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on BackButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on BackButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Save.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on Save: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on Save. Details: {ex.Message}");
+            }
         }
 
         public void AddSpacesinAchievements()
         {
-            AchievementMenu.Click();
-            AddButton.Click();
-            AddAchvmnt.SendKeys("#$%^");
-            BackButton.Click();
-            Save.Click();
+            //try
+            //{
+            //    AddButton.Click();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+            //    Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            //}
+
+            try
+            {
+                AddAchvmnt.SendKeys("        ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddAchvmnt: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddAchvmnt. Details: {ex.Message}");
+            }
+
+            try
+            {
+                BackButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on BackButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on BackButton. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Save.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on Save: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on Save. Details: {ex.Message}");
+            }
 
         }
         //Identifiers

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -8,72 +9,267 @@ namespace ResumeBuilder.Pages.Create_CV
 {
     public class Academics 
     {
-        // private AcademicsIds I;
         private AppiumDriver<IWebElement> driver;
-        private Actions action; 
+        private Actions action;
+        private ExtentTest Test;
 
-        public Academics(AppiumDriver<IWebElement> driver) 
+        public Academics(AppiumDriver<IWebElement> driver, ExtentTest Test) 
         {
             this.driver = driver;
+            this.Test = Test;
             action = new Actions(driver);
-
         }
+
         public void ValidInfo()
         {
-            AcademicsMenu.Click();
-            //Valid  Info
-            MobileElement();
-            action.SendKeys("CodersInsignPVT LTD").Perform();
-          //  action.MoveToElement(I.SaveAndNext).Click().Perform();
-         // driver.HideKeyboard();
-            Major_Course.SendKeys("SQA");
-            //Date of Birth
-            Degree.SendKeys("Software Engineering");
-            SDate.Click();
-          //  Start_Date.Click(); 
-            OK.Click();
-            EDate.Click();
-           // End_Date.Click(); 
-            OK.Click();
-            SaveAndNext.Click();
+            try
+            {
+                AcademicsMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
 
+            try
+            {
+                MobileElement();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                action.SendKeys("CodersInsignPVT LTD").Perform();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Major_Course.SendKeys("SQA");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                Degree.SendKeys("Software Engineering");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                SDate.Click();
+                OK.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                EDate.Click();
+                OK.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
+
+            try
+            {
+                SaveAndNext.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: {ex.Message}");
+            }
         }
-
         public void InValidInfo_Spaces()
         {
-            //InValid  Info
-            MobileElement();
-            action.SendKeys("%&*").Perform();
-            Major_Course.SendKeys("  12%^&*");
-            Degree.SendKeys("034988547664444444444444");
-            SDate.Click();
-            Start_Date.Click(); 
-            OK.Click();
-            EDate.Click();
-            End_Date.Click(); 
-            OK.Click();
-            SaveAndNext.Click();
+            try
+            {
+                MobileElement();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while locating MobileElement: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to locate MobileElement. Details: {ex.Message}");
+            }
+
+            try
+            {
+                action.SendKeys("%&*").Perform();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to action: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to action. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Major_Course.SendKeys("  12%^&*");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Major_Course: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Major_Course. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Degree.SendKeys("034988547664444444444444");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Degree: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Degree. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SDate.Click();
+                Start_Date.Click();
+                OK.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while handling date fields: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Date fields failed. Details: {ex.Message}");
+            }
+
+            try
+            {
+                EDate.Click();
+                End_Date.Click();
+                OK.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while handling end date fields: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: End date fields failed. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SaveAndNext.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking SaveAndNext button: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click SaveAndNext button. Details: {ex.Message}");
+            }
         }
 
-        public void AcademicInfo()
+
+        public void AcademicInfoSpaces()
         {
-            //InValid Personal Info
-            MobileElement();
-            action.SendKeys("             ").Perform();
-            Major_Course.SendKeys("     ");  
-            Degree.SendKeys("    ");
-            SDate.Click();
-            Start_Date.Click(); 
-            OK.Click();
-            EDate.Click();
-            End_Date.Click(); 
-            OK.Click();
-            SaveAndNext.Click();
+            try
+            {
+                MobileElement();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while locating MobileElement: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to locate MobileElement. Details: {ex.Message}");
+            }
+
+            try
+            {
+                action.SendKeys("             ").Perform();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to action: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to action. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Major_Course.SendKeys("     ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Major_Course: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Major_Course. Details: {ex.Message}");
+            }
+
+            try
+            {
+                Degree.SendKeys("    ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to Degree: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to Degree. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SDate.Click();
+                Start_Date.Click();
+                OK.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while handling date fields: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Date fields failed. Details: {ex.Message}");
+            }
+
+            try
+            {
+                EDate.Click();
+                End_Date.Click();
+                OK.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while handling end date fields: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: End date fields failed. Details: {ex.Message}");
+            }
+
+            try
+            {
+                SaveAndNext.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking SaveAndNext button: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click SaveAndNext button. Details: {ex.Message}");
+            }
         }
 
         public void NavigateBack()
         {
-            BackButton.Click();
+            try
+            {
+                BackButton.Click();
+
+            }
+            catch (Exception e)
+            {
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click Save button. Details: {e.Message}");
+            }
         }
         //Identifiers
         private IWebElement AcademicsMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[2]");

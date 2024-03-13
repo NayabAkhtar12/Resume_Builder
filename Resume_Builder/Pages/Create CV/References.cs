@@ -1,48 +1,102 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
     internal class References
     {
         private AppiumDriver<IWebElement> driver;
+        private ExtentTest Test;
 
-        public References(AppiumDriver<IWebElement> driver)
+        public References(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
             this.driver = driver;
+            this.Test = Test;
         }
+
         public void ValidReferencs()
         {
-            ReferMenu.Click();
-            AddReference.SendKeys("Manual Testing");
-            AddButton.Click();
-            BackButton.Click();
-          //  Save.Click();
+            try
+            {
+                ReferMenu.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on ReferMenu: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on ReferMenu. Details: {ex.Message}");
+            }
+
+            try
+            {
+                AddReference.SendKeys("Manual Testing");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddReference: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddReference. Details: {ex.Message}");
+            }
 
         }
+
         public void InvalidReferencs()
         {
-            ReferMenu.Click();
-            AddButton.Click();
-            AddReference.SendKeys("$%^^");
-            BackButton.Click();
-          //  Save.Click();
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
 
+            try
+            {
+                AddReference.SendKeys("$%^^");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddReference: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddReference. Details: {ex.Message}");
+            }
         }
+
         public void Spaces()
         {
-            ReferMenu.Click();
-            AddButton.Click();
-            AddReference.SendKeys("    ");
-            BackButton.Click();
-          //  Save.Click();
+            try
+            {
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
+            }
 
+            try
+            {
+                AddReference.SendKeys("    ");
+                AddButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while sending keys to AddReference: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to send keys to AddReference. Details: {ex.Message}");
+            }
+
+            try
+            {
+                BackButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occurred while clicking on BackButton: " + ex.Message);
+                Test.Log(Status.Fail, $"Test failed due to: Failed to click on BackButton. Details: {ex.Message}");
+            }
         }
+
         //Identifiers
         IWebElement ReferMenu => driver.FindElementByXPath("//android.widget.GridView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/list_tabs\"]/android.view.ViewGroup[8]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");

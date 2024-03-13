@@ -5,20 +5,21 @@ using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium;
 using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using YourNamespace;
 namespace ResumeBuilder.Core
 {
     public class TestInitialize 
     {
         public AppiumDriver<IWebElement> driver;
-        //public AppiumDriver<IWebElement> GetDriver()
-        //{
-        //    return driver;
-        //}
-
+        public ExtentReports extent;
+        //Default Constructor
+        public TestInitialize()
+        {
+            var extentSparkReporter = new ExtentSparkReporter(@"D:\\Report.html");
+            extent = new ExtentReports();
+            extent.AttachReporter(extentSparkReporter);
+        }
 
         [TestInitialize]
         public void Setup()
@@ -35,13 +36,12 @@ namespace ResumeBuilder.Core
                 options.AddAdditionalCapability("unicodeKeyboard", false);
                 options.AddAdditionalCapability("resetKeyboard", false);
 
-                driver = new AndroidDriver<IWebElement>(new Uri("http://192.168.100.5:4723/"), options, TimeSpan.FromSeconds(180));
+                driver = new AndroidDriver<IWebElement>(new Uri(" http://192.168.100.5:4723/"), options, TimeSpan.FromSeconds(180));
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
                
             }
             catch (Exception ex)
             {
-                // Handle driver initialization failure
                 Console.WriteLine($"Failed to initialize driver: {ex.Message}");
                 throw;
             }
@@ -59,10 +59,10 @@ namespace ResumeBuilder.Core
                 }
                 catch (Exception ex)
                 {
-                    // Handle driver cleanup failure
                     Console.WriteLine($"Failed to cleanup driver: {ex.Message}");
                 }
             }
+            extent.Flush();
 
         }
     }
