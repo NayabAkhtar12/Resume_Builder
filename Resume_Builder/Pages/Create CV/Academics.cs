@@ -7,13 +7,13 @@ using System;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
-    public class Academics 
+    public class Academics
     {
         private AppiumDriver<IWebElement> driver;
         private Actions action;
         private ExtentTest Test;
 
-        public Academics(AppiumDriver<IWebElement> driver, ExtentTest Test) 
+        public Academics(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
             this.driver = driver;
             this.Test = Test;
@@ -279,17 +279,17 @@ namespace ResumeBuilder.Pages.Create_CV
 
         IWebElement Ist => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
 
-         IWebElement Major_Course => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/major"));
+        IWebElement Major_Course => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/major"));
 
-         IWebElement Degree => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/course"));
-         IWebElement Start_Date => driver.FindElement(By.XPath(@"//android.view.View[@content-desc=""18 February 2024""]"));
-         IWebElement End_Date => driver.FindElement(By.XPath(@"//android.view.View[@content-desc=""27 February 2024""]"));
-         IWebElement OK => driver.FindElement(By.Id(@"android:id/button1"));
-         IWebElement Cancel => driver.FindElement(By.Id(@"//android.widget.Button[@resource-id=""android:id/button2""]"));
-         IWebElement SaveAndNext => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/save"));
-         IWebElement SDate => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/startDate"));
+        IWebElement Degree => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/course"));
+        IWebElement Start_Date => driver.FindElement(By.XPath(@"//android.view.View[@content-desc=""18 February 2024""]"));
+        IWebElement End_Date => driver.FindElement(By.XPath(@"//android.view.View[@content-desc=""27 February 2024""]"));
+        IWebElement OK => driver.FindElement(By.Id(@"android:id/button1"));
+        IWebElement Cancel => driver.FindElement(By.Id(@"//android.widget.Button[@resource-id=""android:id/button2""]"));
+        IWebElement SaveAndNext => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/save"));
+        IWebElement SDate => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/startDate"));
         private IWebElement EDate => driver.FindElement(By.Id(@"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/endDate"));
-       private IWebElement Mobile => driver.FindElement(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
+        private IWebElement Mobile => driver.FindElement(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder"));
 
         [Obsolete]
         private void MobileElement()

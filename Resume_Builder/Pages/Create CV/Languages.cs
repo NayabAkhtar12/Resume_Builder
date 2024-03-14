@@ -1,15 +1,11 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
-     class Languages
+    class Languages
     {
         private AppiumDriver<IWebElement> driver;
         private ExtentTest Test;

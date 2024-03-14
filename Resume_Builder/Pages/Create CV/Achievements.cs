@@ -1,11 +1,11 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using System;
-using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
-     class Achievements
+    class Achievements
     {
         private AppiumDriver<IWebElement> driver;
 
@@ -16,7 +16,7 @@ namespace ResumeBuilder.Pages.Create_CV
             this.driver = driver;
             this.Test = Test;
         }
-    
+
         public void AddValidAchievements()
         {
             try
@@ -29,7 +29,7 @@ namespace ResumeBuilder.Pages.Create_CV
                 Test.Log(Status.Fail, $"Test failed due to: Failed to click on AchievementMenu. Details: {ex.Message}");
             }
 
-          
+
 
             try
             {
@@ -109,16 +109,6 @@ namespace ResumeBuilder.Pages.Create_CV
 
         public void AddSpacesinAchievements()
         {
-            //try
-            //{
-            //    AddButton.Click();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Exception occurred while clicking on AddButton: " + ex.Message);
-            //    Test.Log(Status.Fail, $"Test failed due to: Failed to click on AddButton. Details: {ex.Message}");
-            //}
-
             try
             {
                 AddAchvmnt.SendKeys("        ");
@@ -150,6 +140,7 @@ namespace ResumeBuilder.Pages.Create_CV
             }
 
         }
+
         //Identifiers
         IWebElement AchievementMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Achievements\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");

@@ -1,15 +1,15 @@
 ﻿
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.Enums;
-using OpenQA.Selenium.Appium;
-using System;
-using OpenQA.Selenium;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.Enums;
+using System;
 namespace ResumeBuilder.Core
 {
-    public class TestInitialize 
+    public class TestInitialize
     {
         public AppiumDriver<IWebElement> driver;
         public ExtentReports extent;
@@ -38,7 +38,7 @@ namespace ResumeBuilder.Core
 
                 driver = new AndroidDriver<IWebElement>(new Uri(" http://192.168.100.5:4723/"), options, TimeSpan.FromSeconds(180));
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
-               
+
             }
             catch (Exception ex)
             {

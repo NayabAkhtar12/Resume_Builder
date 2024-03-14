@@ -10,12 +10,12 @@ using System.Collections.Generic;
 namespace ResumeBuilder.Pages
 {
     //By default Its access modifier is Internal
-    class PersonalInfo 
+    class PersonalInfo
     {
         private AppiumDriver<IWebElement> driver;
         private ExtentTest Test;
 
-        public PersonalInfo(AppiumDriver<IWebElement> driver, ExtentTest Test )
+        public PersonalInfo(AppiumDriver<IWebElement> driver, ExtentTest Test)
         {
             this.driver = driver;
             this.Test = Test;
@@ -33,7 +33,7 @@ namespace ResumeBuilder.Pages
             {
                 Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
             }
-       
+
         }
         public void ImageUploading()
         {
@@ -48,8 +48,8 @@ namespace ResumeBuilder.Pages
                 // Click on the image
                 Image.Click();
             }
-            catch ( Exception e)
-             {
+            catch (Exception e)
+            {
                 Test.Log(Status.Fail, $"Test failed due to: {e.Message}");
 
             }
@@ -85,7 +85,7 @@ namespace ResumeBuilder.Pages
                 try
                 {
                     DOB.Click();
-                   // I.Day.Click(); 
+                    // I.Day.Click(); 
                     okButton.Click();
                 }
                 catch (Exception e)
@@ -432,7 +432,7 @@ namespace ResumeBuilder.Pages
             while (!(cmonth.Equals(exmonthAbbreviation) && CYear.Equals(exyear)))
             {
                 NextMonth.Click();
-               ClickOnCurrentDay(cday);
+                ClickOnCurrentDay(cday);
                 cmonth = HeaderDate.Text.Split(' ')[1]; // Update cmonth with the new month
                 CYear = HeaderYear.Text;
             }
@@ -449,11 +449,11 @@ namespace ResumeBuilder.Pages
                 BackButton.Click();
                 Save.Click();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Exception Occured due to {e} ");
             }
-          
+
         }
 
         //Identifiers:. 

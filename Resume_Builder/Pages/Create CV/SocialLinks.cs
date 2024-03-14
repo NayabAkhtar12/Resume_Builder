@@ -1,5 +1,4 @@
-﻿
-using AventStack.ExtentReports;
+﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Interactions;
@@ -43,7 +42,7 @@ namespace ResumeBuilder.Pages.Create_CV
             try
             {
                 LinkedIn();
-                action.SendKeys("vv").Perform();
+                action.SendKeys("https://www.linkedin.com/login").Perform();
             }
             catch (Exception ex)
             {
@@ -54,7 +53,7 @@ namespace ResumeBuilder.Pages.Create_CV
             try
             {
                 Githublink();
-                action.SendKeys("vv").Perform();
+                action.SendKeys("https://github.com/NayabAkhtar12").Perform();
             }
             catch (Exception ex)
             {
@@ -65,7 +64,7 @@ namespace ResumeBuilder.Pages.Create_CV
             try
             {
                 Twitterlink();
-                action.SendKeys("vv").Perform();
+                action.SendKeys("https://twitter.com/?lang=en").Perform();
             }
             catch (Exception ex)
             {
@@ -76,7 +75,7 @@ namespace ResumeBuilder.Pages.Create_CV
             try
             {
                 Facebooklink();
-                action.SendKeys("vv").Perform();
+                action.SendKeys("https://www.facebook.com/").Perform();
             }
             catch (Exception ex)
             {
@@ -154,7 +153,7 @@ namespace ResumeBuilder.Pages.Create_CV
         private void LinkedIn()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            var element=wait.Until(ExpectedConditions.ElementIsVisible(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder")));
+            var element = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/textinput_placeholder")));
             element.Click();
         }
         private void Githublink()

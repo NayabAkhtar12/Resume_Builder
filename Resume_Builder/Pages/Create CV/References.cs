@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using System;
-using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {

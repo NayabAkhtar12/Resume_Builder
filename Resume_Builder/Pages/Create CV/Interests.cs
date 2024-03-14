@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using System;
-using AventStack.ExtentReports;
 
 namespace ResumeBuilder.Pages.Create_CV
 {
@@ -95,7 +95,7 @@ namespace ResumeBuilder.Pages.Create_CV
             }
         }
 
-      
+
         //Identifiers
         IWebElement InterestMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Interest/Hobbies\"]");
         private IWebElement AddButton => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/add_new");

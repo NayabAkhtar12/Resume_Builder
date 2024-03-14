@@ -1,11 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ResumeBuilder.Core;
-using ResumeBuilder.Pages.Create_CV;
 using ResumeBuilder.Pages;
-using AventStack.ExtentReports;
-using System;
+using ResumeBuilder.Pages.Create_CV;
 
 namespace ResumeBuilder.Test_Class
 {
@@ -69,9 +66,9 @@ namespace ResumeBuilder.Test_Class
             skills.AddValidSkills();
             skills.AddSpacesinSkills();
             skills.AddInvalidSkills();
-            }
+        }
 
-            [TestMethod]
+        [TestMethod]
         public void Interests()
         {
             ExtentTest test = extent.CreateTest("Interests Information Report");
@@ -122,8 +119,8 @@ namespace ResumeBuilder.Test_Class
             ExtentTest test = extent.CreateTest("Project Information Report");
 
             Projects = new Projects(driver, test);
-           Projects.ValidProjects();
-           Projects.InValidProjects();
+            Projects.ValidProjects();
+            Projects.InValidProjects();
         }
 
         [TestMethod]
@@ -131,9 +128,9 @@ namespace ResumeBuilder.Test_Class
         {
             ExtentTest test = extent.CreateTest("SocialMediaLinks Information Report");
 
-            SL = new SocialLinks(driver, test); 
+            SL = new SocialLinks(driver, test);
             SL.ValidSocialLinks();
         }
     }
-  
+
 }

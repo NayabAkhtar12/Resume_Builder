@@ -225,10 +225,10 @@ namespace ResumeBuilder.Pages.Create_CV
                 Console.WriteLine("Exception occurred while clicking Back button: " + ex.Message);
                 Test.Log(Status.Fail, $"Test failed due to: Failed to click Back button. Details: {ex.Message}");
             }
-        }    
+        }
 
         IWebElement ExpMenu => driver.FindElementByXPath("//android.widget.TextView[@resource-id=\"com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/name\" and @text=\"Experiences\"]");
-        IWebElement Company => driver.FindElementById ("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/companyName");
+        IWebElement Company => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/companyName");
         IWebElement Designation => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/designation");
         IWebElement Details => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/didWhat");
 
@@ -236,8 +236,8 @@ namespace ResumeBuilder.Pages.Create_CV
         IWebElement EnddateField => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/endDate");
         IWebElement Star_Date => driver.FindElementByAccessibilityId("26 February 2024");
         IWebElement EndDate => driver.FindElementByAccessibilityId("24 February 2024");
-        IWebElement Ok=> driver.FindElementById("android:id/button1");
-         IWebElement Cancel => driver.FindElementById("android:id/button2");
+        IWebElement Ok => driver.FindElementById("android:id/button1");
+        IWebElement Cancel => driver.FindElementById("android:id/button2");
         IWebElement Back => driver.FindElementByAccessibilityId("Navigate up");
         IWebElement SaveandNext => driver.FindElementById("com.resumecvbuilder.cvbuilderfree.cvmakerlatest.newcvtemplate.cveditorpdfreader:id/save");
 
