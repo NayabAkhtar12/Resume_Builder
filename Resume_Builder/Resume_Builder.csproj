@@ -186,8 +186,6 @@
     <Compile Include="Pages\Create CV\References.cs" />
     <Compile Include="Pages\Create CV\Skills.cs" />
     <Compile Include="Pages\Create CV\SocialLinks.cs" />
-    <Compile Include="Pages\Identifiers\AcademicsIds.cs" />
-    <Compile Include="Pages\Identifiers\PersonalInfoIds.cs" />
     <Compile Include="Pages\Create CV\PersonalInfo.cs" />
     <Compile Include="Test-Class\TestClass.cs" />
     <Compile Include="Core\TestInitialize.cs" />
