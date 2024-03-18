@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 namespace ResumeBuilder.Pages
 {
-    //By default Its access modifier is Internal
     class PersonalInfo
     {
         private AppiumDriver<IWebElement> driver;

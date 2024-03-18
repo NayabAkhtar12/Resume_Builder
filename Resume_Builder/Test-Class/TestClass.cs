@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ResumeBuilder.Core;
 using ResumeBuilder.Pages;
 using ResumeBuilder.Pages.Create_CV;
+using ResumeBuilder.Pages.CV_Template;
 
 namespace ResumeBuilder.Test_Class
 {
@@ -20,6 +21,7 @@ namespace ResumeBuilder.Test_Class
         Languages Lang;
         Projects Projects;
         SocialLinks SL;
+        CV_Templates CV;
 
         [TestMethod]
         public void PersonalInfo()
@@ -131,6 +133,14 @@ namespace ResumeBuilder.Test_Class
             SL = new SocialLinks(driver, test);
             SL.ValidSocialLinks();
         }
+
+        [TestMethod]
+        public void CV_Templates()
+        {
+            CV = new CV_Templates(driver);
+            CV.CVTemplates();
+        }
+
     }
 
 }
